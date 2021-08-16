@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public float kartSpeed;
 
+    public GameObject[] trafficLight;
+
     void Awake()
     {
 
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
         kartSpeed = KartMove.instance.KPH;
 
         UpdateNeedle();
+        StartCoroutine(TrafficLight());
     }
 
     public void UpdateNeedle()
@@ -28,5 +31,18 @@ public class GameManager : MonoBehaviour
         desiredPos = startPos - endPos;
         float temp = kartSpeed / 300;
         needle.transform.eulerAngles = new Vector3(0, 0, (startPos - temp * desiredPos));
+    }
+
+    IEnumerator TrafficLight()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                trafficLight[i].gameObject.SetActive(true);
+
+                yield return new WaitForSeconds(1.0f);
+            }
+        }
     }
 }
