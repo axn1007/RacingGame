@@ -53,6 +53,8 @@ public class KartMove : MonoBehaviour
 
     void kartInput()
     {
+        if (GameManager.instance.isGreen == false) return;
+
         //rb.AddForce(transform.rotation * new Vector3(vInput * 0, 0, power));
         //rb.AddRelativeForce(Vector3.forward * power * vInput);
 
