@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class GameManager : MonoBehaviour
     // 주유 상태바
     public Slider slider;
 
+    // 타이머
+    public TextMeshProUGUI text;
+    public float time;
+
+    private float ms;
+    private float ss;
+    private float mm;
+
     void Awake()
     {
         if (instance == null)
@@ -37,10 +46,12 @@ public class GameManager : MonoBehaviour
         kartSpeed = KartMove.instance.KPH;
 
         UpdateNeedle();
-
+        // 신호등 호출
         StartCoroutine(TrafficLight());
-
+        // 주유 상태바 호출
         StartCoroutine(OilState());
+        // 타이머 호출
+        StartCoroutine(Timer());
     }
 
     // 계기판 업데이트
@@ -73,12 +84,28 @@ public class GameManager : MonoBehaviour
     // 주유 상태바
     IEnumerator OilState()
     {
-        if (isGreen == true)
+        if (isGreen)
         {
             slider.value -= 0.02f * Time.deltaTime;
 
             yield return new WaitForSeconds(1.0f);
-            print(slider.value);
+            //print(slider.value);
+        }
+    }
+
+    // 타이머
+    IEnumerator Timer()
+    {
+        if (isGreen)
+        {
+            time += Time.deltaTime;
+            ms = (int)((time - (int)time) * 100);
+            ss = (int)(time % 60);
+            mm = (int)(time / 60 % 60);
+
+            text.text = string.Format("{0:00}:{1:00}:{2:00}", mm, ss, ms);
+
+            yield return null;
         }
     }
 }
