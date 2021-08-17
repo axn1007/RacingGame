@@ -9,7 +9,6 @@ public class GasCanManager : MonoBehaviour
     void Start()
     {
         RandomGasCan();
-
     }
 
 
@@ -18,6 +17,7 @@ public class GasCanManager : MonoBehaviour
         //RandomGasCan();
     }
 
+    // 랜덤으로 아이템 위치 배치
     void RandomGasCan()
     {
         int num = Random.Range(0, 3);

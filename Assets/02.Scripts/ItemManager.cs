@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    // 주유통 아이템
     public GameObject oil;
     public GameObject oil2;
 
-    void Start()
-    {
-        
-    }
 
-
-    void Update()
-    {
-        
-    }
-
+    // 주유통 아이템 획득
     private void OnTriggerEnter(Collider other)
     {
         print("주유통이랑 부딪혔다!");

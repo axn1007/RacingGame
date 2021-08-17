@@ -51,6 +51,7 @@ public class KartMove : MonoBehaviour
         kartInput();
     }
 
+    // 카트 주행 Input
     void kartInput()
     {
         if (GameManager.instance.isGreen == false) return;
@@ -68,7 +69,7 @@ public class KartMove : MonoBehaviour
             wheels[i].motorTorque = maxTorque * vInput;
             wheels[i].brakeTorque = handBrake;
         }
-        for (int i = 0; i < wheels.Length - 2; i++)
+        for (int i = 0; i < wheels.Length -2; i++)
         {
             wheels[i].steerAngle = maxAngle * hInput;
         }
@@ -90,6 +91,8 @@ public class KartMove : MonoBehaviour
         //}
     }
 
+
+    // 타이어 Animation
     void ShowTire()
     {
         for (int i = 0; i < 4; i++)

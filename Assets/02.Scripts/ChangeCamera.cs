@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ChangeCamera : MonoBehaviour
 {
+    // 1인칭 시점
     public Transform oneView;
+    // 3인칭 시점
     public Transform threeView;
     public float smooth = 5f;
 
-    bool cview;
+    public bool cview;
 
     private void FixedUpdate()
     {
@@ -20,6 +22,7 @@ public class ChangeCamera : MonoBehaviour
         ChangedCamera();
     }
 
+    // 시점 전환
     private void ChangedCamera()
     {
         if(cview)
