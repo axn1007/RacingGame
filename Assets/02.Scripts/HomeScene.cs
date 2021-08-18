@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class HomeScene : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class HomeScene : MonoBehaviour
     public GameObject kart;
     public Transform pos;
     NavMeshAgent nav;
+
+    public GameObject optionImage;
+    bool isOption = false;
 
     void Start()
     {
@@ -41,7 +45,7 @@ public class HomeScene : MonoBehaviour
 
     private void YouMove()
     {
-        iTween.MoveTo(you, iTween.Hash("x", 949, "easeType", "easeOutBounce", "delay", 1f));
+        iTween.MoveTo(you, iTween.Hash("x", 949, "easeType", "easeOutElastic", "delay", 1.5f));
     }
     private void ToMove()
     {
@@ -50,5 +54,34 @@ public class HomeScene : MonoBehaviour
     private void RunMove()
     {
         iTween.MoveTo(run, iTween.Hash("x", 949, "easeType", "easeOutBounce", "delay", 2.5f));
+    }
+
+    public void OnClcikOptionbtn()
+    {
+        if(!isOption)
+        {
+            optionImage.gameObject.SetActive(true);
+            isOption = true;
+        }
+        else
+        {
+            optionImage.gameObject.SetActive(false);
+            isOption = false;
+        }
+    }
+
+    public void OnClickTutorialBtn()
+    {
+        SceneManager.LoadScene("Tutorial Scene");
+    }
+
+    public void OnClickGoBtn()
+    {
+        SceneManager.LoadScene("KartSelect Scene");
+    }
+
+    public void OnClickExitBtn()
+    {
+        Application.Quit();
     }
 }
