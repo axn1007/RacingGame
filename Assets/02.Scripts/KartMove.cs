@@ -14,6 +14,8 @@ public class KartMove : MonoBehaviour
     private float hInput;
     private float vInput;
 
+    public float radius = 6f;
+
     [Tooltip("바퀴에 가해지는 최대 토크")]
     public float maxTorque = 1500f;
     [Tooltip("바퀴의 최대 조향각")]
@@ -64,14 +66,33 @@ public class KartMove : MonoBehaviour
 
         float handBrake = Input.GetKey(KeyCode.Space) ? brakeTorque : 0;
 
+        // 자동차 구동 (4륜)
         for (int i = 0; i < wheels.Length; i++)
         {
             wheels[i].motorTorque = maxTorque * vInput;
             wheels[i].brakeTorque = handBrake;
         }
+        // 좌, 우
         for (int i = 0; i < wheels.Length -2; i++)
         {
-            wheels[i].steerAngle = maxAngle * hInput;
+            if (hInput > 0)
+            {   // rear tracks size is set to 1.5f          wheel base has been set to 2.55f
+                wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius + (1.5f / 2))) * hInput;
+                wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius - (1.5f / 2))) * hInput;
+            }
+            else if (hInput < 0)
+            {
+                wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius - (1.5f / 2))) * hInput;
+                wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius + (1.5f / 2))) * hInput;
+                // transform.Rotate(Vector3.up * steerHelping)
+            }
+            else
+            {
+                wheels[0].steerAngle = 0;
+                wheels[1].steerAngle = 0;
+            }
+
+            //wheels[i].steerAngle = maxAngle * hInput;
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 7000)
@@ -80,7 +101,7 @@ public class KartMove : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            maxTorque = 5000f;
+            maxTorque = 3000f;
         }
 
         KPH = rb.velocity.magnitude * 3.6f;
@@ -95,7 +116,7 @@ public class KartMove : MonoBehaviour
     // 타이어 Animation
     void ShowTire()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < tires.Length; i++)
         {
             Quaternion quat = Quaternion.identity;
             Vector3 pos = Vector3.zero;

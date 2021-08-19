@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     // 주유 상태바
     public Slider slider;
+    // 주유 상태바가 0일 때 출발점으로 되돌아가게 하기위해서
+    public GameObject kart;
+    public Transform sPos;
 
     // 타이머
     public TextMeshProUGUI text;
@@ -90,6 +93,18 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(1.0f);
             //print(slider.value);
+
+            if(slider.value == 0)
+            {
+                kart.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                //kart.gameObject.GetComponent<KartMove>().enabled = false;
+                kart.transform.position = sPos.position;
+                
+                slider.value = 1;
+                //KartMove.instance.wheels[].transform.eulerAngles = new Vector3(0, 0, 0);
+                yield return new WaitForSeconds(2.0f);
+                kart.gameObject.GetComponent<KartMove>().enabled = true;
+            }
         }
     }
 
