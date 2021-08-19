@@ -96,13 +96,15 @@ public class GameManager : MonoBehaviour
 
             if(slider.value == 0)
             {
-                kart.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                KartMove.instance.maxTorque = 0;
+                //kart.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 //kart.gameObject.GetComponent<KartMove>().enabled = false;
                 kart.transform.position = sPos.position;
+                kart.transform.rotation = sPos.rotation;
                 
                 slider.value = 1;
                 //KartMove.instance.wheels[].transform.eulerAngles = new Vector3(0, 0, 0);
-                yield return new WaitForSeconds(2.0f);
+                yield return new WaitForSeconds(1.0f);
                 kart.gameObject.GetComponent<KartMove>().enabled = true;
             }
         }
