@@ -10,6 +10,7 @@ public class TutorialScene : MonoBehaviour
 
     public GameObject optionImage;
     public GameObject optionImage1;
+    public static bool isPractice = false;
     bool isOption = false;
     bool isOption1 = false;
 
@@ -25,6 +26,7 @@ public class TutorialScene : MonoBehaviour
 
     public void OnClickPracticeBtn()
     {
+        isPractice = true;
         methodCanvas.gameObject.SetActive(false);
         practiceCanvas.gameObject.SetActive(true);
 
