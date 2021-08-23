@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     // 주유 상태바
     public Slider slider;
+    //public TextMeshProUGUI oilText;
     // 주유 상태바가 0일 때 출발점으로 되돌아가게 하기위해서
     public GameObject kart;
     public Transform sPos;

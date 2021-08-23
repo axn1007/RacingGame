@@ -18,7 +18,7 @@ public class KartSelectManager : MonoBehaviour
     public GameObject car;
 
     public GameObject[] kartSelect;
-    public GameObject[] kartCustom;
+    public GameObject kartCustom;
 
     public Material racerMat;
     public Material kartMat;
@@ -80,10 +80,7 @@ public class KartSelectManager : MonoBehaviour
         {
             kartSelect[i].gameObject.SetActive(false);
         }
-        for (int i = 0; i < kartCustom.Length; i++)
-        {
-            kartCustom[i].gameObject.SetActive(true);
-        }
+        kartCustom.gameObject.SetActive(true);
     }
     public void OnClickRacing()
     {
