@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -68,18 +69,17 @@ public class GameManager : MonoBehaviour
     // Ω≈»£µÓ
     IEnumerator TrafficLight()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        yield return new WaitForSeconds(1.0f);
+
+        for (int i = 0; i < trafficLight.Length; i++)
         {
-            for(int i = 0; i < trafficLight.Length; i++)
+            trafficLight[i].gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(1.0f);
+
+            if(trafficLight[2].gameObject.activeSelf == true)
             {
-                trafficLight[i].gameObject.SetActive(true);
-
-                yield return new WaitForSeconds(1.0f);
-
-                if(trafficLight[2].gameObject.activeSelf == true)
-                {
-                    isGreen = true;
-                }
+                isGreen = true;
             }
         }
     }

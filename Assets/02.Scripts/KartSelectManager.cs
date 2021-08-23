@@ -1,10 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+enum KartState
+{
+    KART_CAR,
+    KART_SHIP,
+    KART_TRAIN
+}
 
 public class KartSelectManager : MonoBehaviour
 {
     public GameObject[] showKart;
+    KartState state = new KartState();
     public GameObject show;
     public GameObject car;
 
@@ -13,11 +22,11 @@ public class KartSelectManager : MonoBehaviour
 
     public Material racerMat;
     public Material kartMat;
-    //public Shader raceMat;
-    //public Shader kartMat;
 
-    private void Start()
+    void Start()
     {
+        state = (KartState)DataManager.nowPlayer.kartState;
+
         //car.transform.GetComponent<MeshRenderer>().material.shader = Shader.Find("Kart");
         //Color c = car.transform.GetComponent<MeshRenderer>().material.GetColor("Color_AF650A6F");
     }
@@ -27,40 +36,11 @@ public class KartSelectManager : MonoBehaviour
         if(showKart[0].activeSelf == true)
         {
             show.transform.Rotate(new Vector3(0, 50, 0) * Time.deltaTime);
-            //iTween.RotateTo(show, iTween.Hash("y", 200, "easeType", "easeOutElastic", "time", 1.5f));
-
-            //for (int i = 0; i < 500; i++)
-            //{
-            //    show.transform.Rotate(0, i * speed * Time.deltaTime, 0);
-            //}
-
-            //for (int i = 0; i < 200; i++)
-            //{
-            //    showKart[0].transform.Rotate(0, i * Time.deltaTime, 0);
-            //    if (i == 190)
-            //    {
-            //        i = 0;
-            //    }
-            //}
-
-            //for(int i = 0; i <200; i++)
-            //{
-            //    showKart[0].transform.Rotate(0, 200, 0);
-            //    if(showKart[0].transform.rotation.y == 190)
-            //    {
-            //        i = 0;
-            //    }
-            //}
         }
 
         if(showKart[1].activeSelf == true)
         {
-            //show.transform.rotation = Quaternion.identity;
-            //if (show.transform.rotation == Quaternion.Euler(0,0,0))
-            //{
             show.transform.Rotate(new Vector3(0, 50, 0) * Time.deltaTime);
-            //}
-            
         }
 
         if(showKart[2].activeSelf == true)
@@ -69,12 +49,15 @@ public class KartSelectManager : MonoBehaviour
         }
     }
 
-    public void OnClickCarBtn()
+    public void OnClickCarBtn() //int num
     {
+        //state = (KartState)num;
+        //DataManager.nowPlayer.kartState = (int)state;
+        //DataManager.instance.Save(DataManager.nowPlayer);
+
         showKart[0].gameObject.SetActive(true);
         showKart[1].gameObject.SetActive(false);
         showKart[2].gameObject.SetActive(false);
-        showKart[3].gameObject.SetActive(false);
     }
 
     public void OnClickShipBtn()
@@ -82,7 +65,6 @@ public class KartSelectManager : MonoBehaviour
         showKart[1].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
         showKart[2].gameObject.SetActive(false);
-        showKart[3].gameObject.SetActive(false);
     }
 
     public void OnClicKTrainBtn()
@@ -90,7 +72,6 @@ public class KartSelectManager : MonoBehaviour
         showKart[2].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
         showKart[1].gameObject.SetActive(false);
-        showKart[3].gameObject.SetActive(false);
     }
 
     public void OnClickKartSelect()
@@ -103,6 +84,10 @@ public class KartSelectManager : MonoBehaviour
         {
             kartCustom[i].gameObject.SetActive(true);
         }
+    }
+    public void OnClickRacing()
+    {
+        SceneManager.LoadScene("Racing Scene");
     }
 
     public void RedBtn()
@@ -118,10 +103,10 @@ public class KartSelectManager : MonoBehaviour
     public void YellowBtn()
     {
         print("노랑색으로 변해라!");
-        //racerMat.color = new Color(255, 238, 35);
-        //kartMat.color = new Color(255, 238, 35);
-        //print("노랑색으로 변했다!");
-        //print(racerMat.color);
+        racerMat.color = new Color(255, 238, 35);
+        kartMat.color = new Color(255, 238, 35);
+        print("노랑색으로 변했다!");
+        print(racerMat.color);
 
         //car.transform.GetComponent<MeshRenderer>().material.SetColor("Color_AF650A6F", new Color(255, 238, 35));
     }

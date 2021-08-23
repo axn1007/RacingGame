@@ -36,7 +36,7 @@ public class HelpTyping : MonoBehaviour
 
     IEnumerator RuleTyping()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         for(int i = 0; i < ruleTyping.Length; i++)
         {
@@ -45,7 +45,7 @@ public class HelpTyping : MonoBehaviour
             yield return new WaitForSeconds(0.13f);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         for (int y = 0; y < ruleTyping2.Length; y++)
         {
@@ -54,7 +54,7 @@ public class HelpTyping : MonoBehaviour
             yield return new WaitForSeconds(0.13f);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         for (int u = 0; u < ruleTyping3.Length; u++)
         {
