@@ -105,8 +105,8 @@ public class GameManager : MonoBehaviour
                 
                 slider.value = 1;
                 //KartMove.instance.wheels[].transform.eulerAngles = new Vector3(0, 0, 0);
-                yield return new WaitForSeconds(1.0f);
-                kart.gameObject.GetComponent<KartMove>().enabled = true;
+                //yield return new WaitForSeconds(1.0f);
+                //kart.gameObject.GetComponent<KartMove>().enabled = true;
             }
         }
     }

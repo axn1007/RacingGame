@@ -49,11 +49,11 @@ public class KartSelectManager : MonoBehaviour
         }
     }
 
-    public void OnClickCarBtn() //int num
+    public void OnClickCarBtn()
     {
-        //state = (KartState)num;
-        //DataManager.nowPlayer.kartState = (int)state;
-        //DataManager.instance.Save(DataManager.nowPlayer);
+        state = KartState.KART_CAR;
+        DataManager.nowPlayer.kartState = (int)state;
+        DataManager.instance.Save(DataManager.nowPlayer);
 
         showKart[0].gameObject.SetActive(true);
         showKart[1].gameObject.SetActive(false);
@@ -62,6 +62,10 @@ public class KartSelectManager : MonoBehaviour
 
     public void OnClickShipBtn()
     {
+        state = KartState.KART_SHIP;
+        DataManager.nowPlayer.kartState = (int)state;
+        DataManager.instance.Save(DataManager.nowPlayer);
+
         showKart[1].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
         showKart[2].gameObject.SetActive(false);
@@ -69,6 +73,10 @@ public class KartSelectManager : MonoBehaviour
 
     public void OnClicKTrainBtn()
     {
+        state = KartState.KART_TRAIN;
+        DataManager.nowPlayer.kartState = (int)state;
+        DataManager.instance.Save(DataManager.nowPlayer);
+
         showKart[2].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
         showKart[1].gameObject.SetActive(false);
