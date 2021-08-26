@@ -17,13 +17,13 @@ public class KartMove : MonoBehaviour
     public float radius = 6f;
 
     [Tooltip("바퀴에 가해지는 최대 토크")]
-    public float maxTorque = 1500f;
+    public float maxTorque = 7000f;
     [Tooltip("바퀴의 최대 조향각")]
-    public float maxAngle = 40f;
+    public float maxAngle = 30f;
     [Tooltip("바퀴에 가해지는 최대 제동 토크")]
     public float brakeTorque = 10000f;
     [Tooltip("바퀴에 가해지는 가속도")]
-    public float power  = 500f;
+    public float power  = 1000f;
 
     public float KPH;
 
@@ -95,7 +95,7 @@ public class KartMove : MonoBehaviour
             //wheels[i].steerAngle = maxAngle * hInput;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 7000)
+        if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 10000)
         {
             maxTorque += power;
         }
