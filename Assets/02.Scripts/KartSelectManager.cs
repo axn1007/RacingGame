@@ -27,6 +27,7 @@ public class KartSelectManager : MonoBehaviour
     {
         state = (KartState)DataManager.nowPlayer.kartState;
 
+        //racerMat = showKart[0].transform.Find("Racer_Red").
         //car.transform.GetComponent<MeshRenderer>().material.shader = Shader.Find("Kart");
         //Color c = car.transform.GetComponent<MeshRenderer>().material.GetColor("Color_AF650A6F");
     }
@@ -58,6 +59,7 @@ public class KartSelectManager : MonoBehaviour
         showKart[0].gameObject.SetActive(true);
         showKart[1].gameObject.SetActive(false);
         showKart[2].gameObject.SetActive(false);
+        showKart[3].gameObject.SetActive(false);
     }
 
     public void OnClickShipBtn()
@@ -69,6 +71,7 @@ public class KartSelectManager : MonoBehaviour
         showKart[1].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
         showKart[2].gameObject.SetActive(false);
+        showKart[3].gameObject.SetActive(false);
     }
 
     public void OnClicKTrainBtn()
@@ -80,6 +83,7 @@ public class KartSelectManager : MonoBehaviour
         showKart[2].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
         showKart[1].gameObject.SetActive(false);
+        showKart[3].gameObject.SetActive(false);
     }
 
     public void OnClickKartSelect()

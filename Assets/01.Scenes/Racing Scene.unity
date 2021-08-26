@@ -1167,6 +1167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82ab3032905819468453c0a7162aab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kartLoad:
+  - {fileID: 1041584182}
+  - {fileID: 758924318}
+  - {fileID: 472754585}
   needle: {fileID: 140411974}
   kartSpeed: 0
   trafficLight:
@@ -2253,6 +2257,11 @@ Transform:
   m_Father: {fileID: 848853337}
   m_RootOrder: 99
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &472754585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6575519831313040646, guid: 9f689842eb7626a408570a8067f78cf8, type: 3}
+  m_PrefabInstance: {fileID: 288277184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &480829104
 GameObject:
   m_ObjectHideFlags: 0

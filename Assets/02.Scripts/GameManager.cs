@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public GameObject[] kartLoad;
+
     // ∞Ë±‚∆«
     public GameObject needle;
     private float startPos = 180f, endPos = -2f;
@@ -43,6 +45,20 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        if(DataManager.nowPlayer.kartState == 0)
+        {
+            kartLoad[0].gameObject.SetActive(true);
+        }
+        else if(DataManager.nowPlayer.kartState == 1)
+        {
+            kartLoad[1].gameObject.SetActive(true);
+        }
+        else
+        {
+            kartLoad[2].gameObject.SetActive(true);
+        }
+        
     }
 
 
