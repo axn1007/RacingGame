@@ -11,6 +11,10 @@ public class NextSceneManager : MonoBehaviour
     private RectTransform rt;
     public GameObject moveImage2;
     private RectTransform rt2;
+    public GameObject moveImage3;
+    private RectTransform rt3;
+    public GameObject moveImage4;
+    private RectTransform rt4;
     private float speed = 300;
 
     public string typing = "LOADING.....";
@@ -19,6 +23,8 @@ public class NextSceneManager : MonoBehaviour
     {
         rt = moveImage.GetComponent<RectTransform>();
         rt2 = moveImage2.GetComponent<RectTransform>();
+        rt3 = moveImage3.GetComponent<RectTransform>();
+        rt4 = moveImage4.GetComponent<RectTransform>();
 
         StartCoroutine(LoadingTyping());
     }
@@ -32,6 +38,8 @@ public class NextSceneManager : MonoBehaviour
     {
         rt.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
         rt2.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
+        rt3.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+        rt4.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
     }
 
     IEnumerator LoadingTyping()
