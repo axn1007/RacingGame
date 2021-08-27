@@ -27,9 +27,11 @@ public class GameManager : MonoBehaviour
     // 주유 상태바
     public Slider slider;
     //public TextMeshProUGUI oilText;
+
     // 주유 상태바가 0일 때 출발점으로 되돌아가게 하기위해서
-    public GameObject kart;
     public Transform sPos;
+    //public GameObject wheels;
+    public GameObject player;
 
     // 타이머
     public TextMeshProUGUI text;
@@ -46,19 +48,19 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        //if(DataManager.nowPlayer.kartState == 0)
-        //{
-        //    kartLoad[0].gameObject.SetActive(true);
-        //}
-        //else if(DataManager.nowPlayer.kartState == 1)
-        //{
-        //    kartLoad[1].gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    kartLoad[2].gameObject.SetActive(true);
-        //}
-        
+        if (DataManager.nowPlayer.kartState == 0)
+        {
+            kartLoad[0].gameObject.SetActive(true);
+        }
+        else if (DataManager.nowPlayer.kartState == 1)
+        {
+            kartLoad[1].gameObject.SetActive(true);
+        }
+        else
+        {
+            kartLoad[2].gameObject.SetActive(true);
+        }
+
     }
 
 
@@ -114,15 +116,34 @@ public class GameManager : MonoBehaviour
             if(slider.value == 0)
             {
                 KartMove.instance.maxTorque = 0;
-                //kart.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //kart.gameObject.GetComponent<KartMove>().enabled = false;
-                kart.transform.position = sPos.position;
-                kart.transform.rotation = sPos.rotation;
-                
+
+                player.transform.position = sPos.position;
+                player.transform.rotation = sPos.rotation;
+
                 slider.value = 1;
-                //KartMove.instance.wheels[].transform.eulerAngles = new Vector3(0, 0, 0);
-                //yield return new WaitForSeconds(1.0f);
-                //kart.gameObject.GetComponent<KartMove>().enabled = true;
+
+                // 주유 상태바가 0일 때 출발점으로 되돌아가게 하기위해서
+                //if (kartLoad[0].gameObject.activeSelf == true)
+                //{
+                //    kartLoad[0].transform.position = sPos.position;
+                //    kartLoad[0].transform.rotation = sPos.rotation;
+
+                //    slider.value = 1;
+                //}
+                //else if(kartLoad[1].gameObject.activeSelf == true)
+                //{
+                //    kartLoad[1].transform.position = sPos.position;
+                //    kartLoad[1].transform.rotation = sPos.rotation;
+
+                //    slider.value = 1;
+                //}
+                //else
+                //{
+                //    kartLoad[2].transform.position = sPos.position;
+                //    kartLoad[2].transform.rotation = sPos.rotation;
+
+                //    slider.value = 1;
+                //}
             }
         }
     }

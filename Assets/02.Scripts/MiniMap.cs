@@ -7,11 +7,11 @@ public class MiniMap : MonoBehaviour
     private LineRenderer lr;
     private GameObject trackPath;
 
-    public GameObject kart;
+    public GameObject player;
     // 미니맵 카메라
     public GameObject miniMapCam;
     // 미니맵에 표시되는 Player
-    public GameObject player;
+    public GameObject playerpos;
 
     void Start()
     {
@@ -22,9 +22,9 @@ public class MiniMap : MonoBehaviour
     void Update()
     {
         // 카트의 실시간 위치를 나타내기 위한 카트
-        miniMapCam.transform.position = new Vector3(kart.transform.position.x, miniMapCam.transform.position.y, kart.transform.position.z);
+        miniMapCam.transform.position = new Vector3(player.transform.position.x, miniMapCam.transform.position.y, player.transform.position.z);
         // 미니맵에 표시되는 Player 위치
-        player.transform.position = new Vector3(kart.transform.position.x, player.transform.position.y, kart.transform.position.z);
+        playerpos.transform.position = new Vector3(player.transform.position.x, playerpos.transform.position.y, player.transform.position.z);
     }
 
     // 미니맵
