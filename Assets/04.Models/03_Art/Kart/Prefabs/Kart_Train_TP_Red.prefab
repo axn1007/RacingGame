@@ -245,7 +245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5767739886509694908}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &75730749035306610
 MeshFilter:
@@ -612,7 +612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5767739886509694908}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4496169212740478583
 MeshFilter:
@@ -777,7 +777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5767739886509694908}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3599318370445411465
 MeshFilter:
@@ -2227,7 +2227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f3dc139ceee3fe4989ae4f7c5c8c146, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2282,10 +2282,10 @@ Transform:
   - {fileID: 106007433320443028}
   - {fileID: 5635807211350648957}
   - {fileID: 880517694541857848}
-  - {fileID: 6571370665144008987}
-  - {fileID: 5036855001574350490}
-  - {fileID: 6081127800415552343}
   - {fileID: 1519931351026456116}
+  - {fileID: 6081127800415552343}
+  - {fileID: 5036855001574350490}
+  - {fileID: 6571370665144008987}
   - {fileID: 9114173714468916147}
   - {fileID: 6704455618217038010}
   m_Father: {fileID: 0}
@@ -2834,7 +2834,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5767739886509694908}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8983823330584972938
 MeshFilter:

@@ -6,8 +6,9 @@ public class KartMove : MonoBehaviour
 {
     public static KartMove instance;
     
+    // 바퀴 휠콜라이더
     public WheelCollider[] wheels = new WheelCollider[4];
-    public Transform[]      tires = new Transform[4];
+    GameObject[] wheelMesh = new GameObject[4];
 
     private string h = "Horizontal";
     private string v = "Vertical";
@@ -35,21 +36,28 @@ public class KartMove : MonoBehaviour
         {
             instance = this;
         }
+
+        
     }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = new Vector3(0, 0, 0);
-    }
+        // 바퀴 모델을 태크를 통해 자동으로 찾아온다.
+        wheelMesh = GameObject.FindGameObjectsWithTag("WHEELMESH");
 
-    private void Update()
-    {
-        ShowTire();
+        for(int i = 0; i < wheelMesh.Length; i++)
+        {
+            wheels[i].transform.position = wheelMesh[i].transform.position;
+        }
+
+
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = new Vector3(0, -1, 0);
     }
 
     private void FixedUpdate()
     {
+        WheelMeshposAni();
         kartInput();
     }
 
@@ -113,16 +121,17 @@ public class KartMove : MonoBehaviour
     }
 
 
-    // 타이어 Animation
-    void ShowTire()
+    // 휠콜라이더 위치를 잡아주고 Animation 보여주기 위해서
+    void WheelMeshposAni()
     {
-        for (int i = 0; i < tires.Length; i++)
+        Quaternion quat = Quaternion.identity;
+        Vector3 pos = Vector3.zero;
+
+        for (int i = 0; i < wheelMesh.Length; i++)
         {
-            Quaternion quat = Quaternion.identity;
-            Vector3 pos = Vector3.zero;
             wheels[i].GetWorldPose(out pos, out quat);
-            tires[i].position = pos;
-            tires[i].rotation = quat;
+            wheelMesh[i].transform.position = pos;
+            wheelMesh[i].transform.rotation = quat;
         }
     }
 }
