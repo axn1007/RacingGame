@@ -29,6 +29,7 @@ public class KartMove : MonoBehaviour
     public float KPH;
 
     Rigidbody rb;
+    public float downForce;
 
     private void Awake()
     {
@@ -68,6 +69,7 @@ public class KartMove : MonoBehaviour
 
         //rb.AddForce(transform.rotation * new Vector3(vInput * 0, 0, power));
         rb.AddRelativeForce(Vector3.forward * power * vInput);
+        rb.AddForce(-transform.up * downForce * rb.velocity.magnitude);
 
         hInput = Input.GetAxis(h);
         vInput = Input.GetAxis(v);

@@ -3655,6 +3655,7 @@ MonoBehaviour:
   brakeTorque: 10000
   power: 500
   KPH: 0
+  downForce: 0
 --- !u!114 &758924323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5096,6 +5097,7 @@ MonoBehaviour:
   brakeTorque: 10000
   power: 500
   KPH: 0
+  downForce: 0
 --- !u!64 &1041584190
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9485,6 +9487,7 @@ MonoBehaviour:
   brakeTorque: 10000
   power: 1000
   KPH: 0
+  downForce: 100
 --- !u!114 &1893513286
 MonoBehaviour:
   m_ObjectHideFlags: 0
