@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
 
     // 주유 상태바
     public Slider slider;
-    //public TextMeshProUGUI oilText;
+    public TextMeshProUGUI oilText;
+    public float oilNum = 50;
 
     // 주유 상태바가 0일 때 출발점으로 되돌아가게 하기위해서
     public Transform sPos;
@@ -109,21 +110,29 @@ public class GameManager : MonoBehaviour
         if (isGreen)
         {
             slider.value -= 0.02f * Time.deltaTime;
+            oilNum -= 1 * Time.deltaTime;
+            oilText.text = ((int)oilNum).ToString();
 
             yield return new WaitForSeconds(1.0f);
             //print(slider.value);
 
-            if(slider.value == 0)
+            if(slider.value == 0 || oilNum == 0)
             {
+                oilNum = 0;
+                oilText.text = ((int)oilNum).ToString();
+
                 KartMove.instance.maxTorque = 0;
 
                 player.transform.position = sPos.position;
                 player.transform.rotation = sPos.rotation;
 
                 slider.value = 1;
+                oilNum = 50;
 
                 // 주유 상태바가 0일 때 출발점으로 되돌아가게 하기위해서
-                //if (kartLoad[0].gameObject.activeSelf == true)
+                //if (kartLoad[0].gameObject.acti
+                //
+                //eSelf == true)
                 //{
                 //    kartLoad[0].transform.position = sPos.position;
                 //    kartLoad[0].transform.rotation = sPos.rotation;
