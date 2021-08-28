@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NextSceneManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class NextSceneManager : MonoBehaviour
     public GameObject moveImage4;
     private RectTransform rt4;
     private float speed = 300;
+    private float currTime;
 
     public string typing = "LOADING.....";
 
@@ -32,6 +34,17 @@ public class NextSceneManager : MonoBehaviour
     private void FixedUpdate()
     {
         moveMove();
+
+        currTime += Time.deltaTime;
+        if (currTime > 3)
+        {
+            SceneManager.LoadScene("Tutorial Scene");
+        }
+
+        if(KartSelectManager.isRacingBtn == true && currTime > 3)
+        {
+            SceneManager.LoadScene("Racing Scene");
+        }
     }
 
     void moveMove()
@@ -44,13 +57,13 @@ public class NextSceneManager : MonoBehaviour
 
     IEnumerator LoadingTyping()
     {
-        yield return new WaitForSeconds(0.2f);
+        //yield return new WaitForSeconds(0f);
 
         for (int i = 0; i < typing.Length; i++)
         {
             text.text = typing.Substring(0, i);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

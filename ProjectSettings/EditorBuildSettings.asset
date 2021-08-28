@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/Racing Scene.unity
     guid: 2f3fc5fa84424974790dd281503eafed
+  - enabled: 1
+    path: Assets/01.Scenes/Ending Scene.unity
+    guid: e4100ae7acd36f145a6a85422bacb0f9
+  - enabled: 1
+    path: Assets/01.Scenes/Next Scene.unity
+    guid: 64a851b87b89ffd4292a0b0fd4270f28
   m_configObjects: {}

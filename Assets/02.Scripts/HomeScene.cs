@@ -17,6 +17,7 @@ public class HomeScene : MonoBehaviour
     public GameObject optionImage;
     bool isOption = false;
 
+
     void Start()
     {
         nav = kart.GetComponent<NavMeshAgent>();
@@ -72,16 +73,47 @@ public class HomeScene : MonoBehaviour
 
     public void OnClickTutorialBtn()
     {
-        SceneManager.LoadScene("Tutorial Scene");
+        StartCoroutine(LoadScene());
+
+        //SceneManager.LoadScene("Tutorial Scene");
+        //AsyncOperation op = SceneManager.LoadSceneAsync("Tutorial Scene");
+
+        //op.allowSceneActivation = false;
     }
 
     public void OnClickGoBtn()
     {
-        SceneManager.LoadScene("KartSelect Scene");
+        SceneManager.LoadScene("Next Scene");
+        //SceneManager.LoadScene("Tutorial Scene");
+        //SceneManager.LoadScene("KartSelect Scene");
     }
 
     public void OnClickExitBtn()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadScene()
+    {
+        SceneManager.LoadScene("Next Scene");
+
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene("Tutorial Scene");
+
+        ////yield return null;
+
+        //AsyncOperation op = SceneManager.LoadSceneAsync("Tutorial Scene");
+
+        //op.allowSceneActivation = false;
+
+        ////yield return new WaitForSeconds(0.5f);
+
+        //SceneManager.LoadScene("Next Scene");
+
+        ////yield return new WaitForSeconds(1f);
+
+        //op.allowSceneActivation = true;
+        //yield break;
     }
 }

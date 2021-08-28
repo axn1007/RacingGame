@@ -15,13 +15,15 @@ public class KartSelectManager : MonoBehaviour
     public GameObject[] showKart;
     KartState state = new KartState();
     public GameObject show;
-    public GameObject car;
+    //public GameObject car;
 
     public GameObject[] kartSelect;
     public GameObject kartCustom;
 
     public Material racerMat;
     public Material kartMat;
+
+    public static bool isRacingBtn = false;
 
     void Start()
     {
@@ -96,7 +98,9 @@ public class KartSelectManager : MonoBehaviour
     }
     public void OnClickRacing()
     {
-        SceneManager.LoadScene("Racing Scene");
+        isRacingBtn = true;
+        SceneManager.LoadScene("Next Scene");
+        //SceneManager.LoadScene("Racing Scene");
     }
 
     public void RedBtn()
