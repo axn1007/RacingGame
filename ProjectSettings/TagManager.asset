@@ -8,6 +8,8 @@ TagManager:
   - Obs
   - GasCan
   - WHEELMESH
+  - Goal
+  - Goal2
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - 
   - 
   - LOADING
-  - 
+  - END
   - 
   - 
   - 

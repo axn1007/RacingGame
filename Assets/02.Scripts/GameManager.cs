@@ -42,6 +42,13 @@ public class GameManager : MonoBehaviour
     private float ss;
     private float mm;
 
+    // 정지버튼
+    public bool isPause = false;
+
+    // 골 확인
+    public bool isGoal1 = false;
+    public bool isGoal2 = false;
+
     void Awake()
     {
         if (instance == null)
@@ -76,6 +83,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(OilState());
         // 타이머 호출
         StartCoroutine(Timer());
+        // 타이머 정지
+        StopTimer();
     }
 
     // 계기판 업데이트
@@ -173,13 +182,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PauseBtn()
+    void StopTimer()
     {
+        if(isGoal1 == true && isGoal2 == true)
+        {
+            print("골인");
+            StopCoroutine(Timer());
+            isGreen = false;
+        }
+    }
 
+    public void OnClickPauseBtn()
+    {
+        if(!isPause)
+        {
+            Time.timeScale = 0;
+            isPause = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            isPause = false;
+        }
     }
 
     public void OnClickExitBtn()
     {
         Application.Quit();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Goal"))
+        {
+            Destroy(other);
+            isGoal1 = true;
+            print("1부딪");
+        }
+        if (other.CompareTag("Goal2"))
+        {
+            Destroy(other);
+            isGoal2 = true;
+            print("2부딪");
+        }
     }
 }

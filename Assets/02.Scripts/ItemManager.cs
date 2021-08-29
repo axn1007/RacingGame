@@ -16,10 +16,9 @@ public class ItemManager : MonoBehaviour
     // ÁÖÀ¯Åë ¾ÆÀÌÅÛ È¹µæ
     private void OnTriggerEnter(Collider other)
     {
-        print("ÁÖÀ¯ÅëÀÌ¶û ºÎµúÇû´Ù!");
-
         if (other.CompareTag("GasCan"))
         {
+            print("ÁÖÀ¯ÅëÀÌ¶û ºÎµúÇû´Ù!");
             other.gameObject.SetActive(false);
             
             if (oil.activeSelf == false)
