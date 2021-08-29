@@ -23,6 +23,9 @@ public class KartSelectManager : MonoBehaviour
     public Material racerMat;
     public Material kartMat;
 
+    public GameObject optionImage;
+    bool isOption = false;
+
     public static bool isRacingBtn = false;
 
     void Start()
@@ -88,6 +91,8 @@ public class KartSelectManager : MonoBehaviour
         showKart[3].gameObject.SetActive(false);
     }
 
+    /*
+    // 카트 색 변경 보류..
     public void OnClickKartSelect()
     {
         for(int i = 0; i < kartSelect.Length; i++)
@@ -95,7 +100,7 @@ public class KartSelectManager : MonoBehaviour
             kartSelect[i].gameObject.SetActive(false);
         }
         kartCustom.gameObject.SetActive(true);
-    }
+    } */
     public void OnClickRacing()
     {
         isRacingBtn = true;
@@ -103,6 +108,32 @@ public class KartSelectManager : MonoBehaviour
         //SceneManager.LoadScene("Racing Scene");
     }
 
+    public void OnClcikOptionbtn()
+    {
+        if (!isOption)
+        {
+            optionImage.gameObject.SetActive(true);
+            isOption = true;
+        }
+        else
+        {
+            optionImage.gameObject.SetActive(false);
+            isOption = false;
+        }
+    }
+
+    public void OnClickHomeBtn()
+    {
+        SceneManager.LoadScene("Home Scene");
+    }
+
+    public void OnClickExitBtn()
+    {
+        Application.Quit();
+    }
+
+    /*
+    // 쉐이더 그래프를 가져올 수 없어서 보류..
     public void RedBtn()
     {
         racerMat.color = new Color(255, 0, 0);
@@ -157,5 +188,5 @@ public class KartSelectManager : MonoBehaviour
     {
         racerMat.color = new Color(245, 33, 166);
         kartMat.color = new Color(245, 33, 166);
-    }
+    } */
 }

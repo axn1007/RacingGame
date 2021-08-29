@@ -172,4 +172,14 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void PauseBtn()
+    {
+
+    }
+
+    public void OnClickExitBtn()
+    {
+        Application.Quit();
+    }
 }
