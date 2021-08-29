@@ -1239,6 +1239,7 @@ MonoBehaviour:
   - {fileID: 1552588281}
   - {fileID: 1878250896}
   isGreen: 0
+  isGreen1: 0
   slider: {fileID: 904806107}
   oilText: {fileID: 1327133617}
   oilNum: 50
@@ -1247,8 +1248,6 @@ MonoBehaviour:
   text: {fileID: 201529852}
   time: 0
   isPause: 0
-  isGoal1: 0
-  isGoal2: 0
 --- !u!4 &177495439
 Transform:
   m_ObjectHideFlags: 0
@@ -1698,7 +1697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -41.333332, y: -612.3}
+  m_AnchoredPosition: {x: -41.333374, y: -612.3}
   m_SizeDelta: {x: 140, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245976456
@@ -1861,7 +1860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -41.333332, y: -681.5}
+  m_AnchoredPosition: {x: -41.333374, y: -681.5}
   m_SizeDelta: {x: 140, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263657177
@@ -2603,7 +2602,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418236271}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -9146,7 +9145,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043632674}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1

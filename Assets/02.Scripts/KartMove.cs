@@ -136,4 +136,20 @@ public class KartMove : MonoBehaviour
             wheelMesh[i].transform.rotation = quat;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Goal"))
+        {
+            //Destroy(other);
+            GameManager.isGoal1 = true;
+            print("1ºÎµú");
+        }
+        else if (other.CompareTag("Goal2"))
+        {
+            //Destroy(other);
+            GameManager.isGoal2 = true;
+            print("2ºÎµú");
+        }
+    }
 }

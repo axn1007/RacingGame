@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     // 초록불이 들어올 때
     public bool isGreen = false;
+    public bool isGreen1 = false;
 
     // 주유 상태바
     public Slider slider;
@@ -46,8 +47,8 @@ public class GameManager : MonoBehaviour
     public bool isPause = false;
 
     // 골 확인
-    public bool isGoal1 = false;
-    public bool isGoal2 = false;
+    public static bool isGoal1 = false;
+    public static bool isGoal2 = false;
 
     void Awake()
     {
@@ -69,6 +70,9 @@ public class GameManager : MonoBehaviour
             kartLoad[2].gameObject.SetActive(true);
         }
 
+        // 신호등 호출
+        StartCoroutine(TrafficLight());
+
     }
 
 
@@ -78,13 +82,13 @@ public class GameManager : MonoBehaviour
 
         UpdateNeedle();
         // 신호등 호출
-        StartCoroutine(TrafficLight());
+        //StartCoroutine(TrafficLight());
         // 주유 상태바 호출
         StartCoroutine(OilState());
         // 타이머 호출
         StartCoroutine(Timer());
         // 타이머 정지
-        StopTimer();
+        Goal();
     }
 
     // 계기판 업데이트
@@ -109,7 +113,10 @@ public class GameManager : MonoBehaviour
             if(trafficLight[2].gameObject.activeSelf == true)
             {
                 isGreen = true;
+                isGreen1 = true;
             }
+
+            yield return null;
         }
     }
 
@@ -169,7 +176,7 @@ public class GameManager : MonoBehaviour
     // 타이머
     IEnumerator Timer()
     {
-        if (isGreen)
+        if (isGreen1)
         {
             time += Time.deltaTime;
             ms = (int)((time - (int)time) * 100);
@@ -182,13 +189,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void StopTimer()
+    void Goal()
     {
         if(isGoal1 == true && isGoal2 == true)
         {
             print("골인");
+            StopCoroutine(TrafficLight());
             StopCoroutine(Timer());
-            isGreen = false;
+            isGreen1 = false;
+
+            DataManager.nowPlayer.time = text.text;
+            //DataManager.instance.Save(DataManager.nowPlayer);
+
+            SceneManager.LoadScene("Ending Scene");
         }
     }
 
@@ -209,21 +222,5 @@ public class GameManager : MonoBehaviour
     public void OnClickExitBtn()
     {
         Application.Quit();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Goal"))
-        {
-            Destroy(other);
-            isGoal1 = true;
-            print("1부딪");
-        }
-        if (other.CompareTag("Goal2"))
-        {
-            Destroy(other);
-            isGoal2 = true;
-            print("2부딪");
-        }
     }
 }

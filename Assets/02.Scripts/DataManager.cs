@@ -72,7 +72,7 @@ public class DataManager : MonoBehaviour
 public class PlayerData
 {
     public int kartState = 0;
-    public string UserName;
-    public int rank;
+    public string UserNameArr;
+    public string[] rankArr;
     public string time;
 }
