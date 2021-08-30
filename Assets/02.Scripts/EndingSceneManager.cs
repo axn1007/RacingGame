@@ -31,18 +31,19 @@ public class EndingSceneManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (UserNameInput.text.Length > 1)
+        Regex.IsMatch(UserNameInput.text, "^[0-9a-zA-Z°¡-ÆR]*$");
+        userInput.characterLimit = 8;
+
+        if (UserNameInput.text.Length > 1 & UserNameInput.text.Length != 0)
         {
             enterBtn.interactable = true;
         }
-        else if (UserNameInput.text.Length > 10)
-        {
-            enterBtn.interactable = false;
-        }
+        
     }
 
     public void OnClickRanking()
     {
+        
         DataManager.nowPlayer.UserNameArr = UserNameInput.text;
         rankingName.text = DataManager.nowPlayer.UserNameArr;
         rankingTime.text = time.text;
