@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
                 player.transform.rotation = sPos.rotation;
 
                 SoundManager.instance.eftAudio.Stop();
-                oilE.gameObject.SetActive(true);
+                oilE.gameObject.SetActive(false);
                 slider.value = 1;
                 oilNum = 50;
 
@@ -221,6 +221,8 @@ public class GameManager : MonoBehaviour
     {
         if(isGoal1 == true && isGoal2 == true)
         {
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Goal);
+
             print("∞Ò¿Œ");
             StopCoroutine(TrafficLight());
             StopCoroutine(Timer());
