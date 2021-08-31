@@ -14,26 +14,20 @@ public class TutorialScene : MonoBehaviour
     bool isOption = false;
     bool isOption1 = false;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void OnClickPracticeBtn()
     {
         isPractice = true;
         methodCanvas.gameObject.SetActive(false);
+        SoundManager.instance.eftAudio.Stop();
         practiceCanvas.gameObject.SetActive(true);
 
     }
 
     public void OnClickGoBtn()
     {
+        SoundManager.instance.bgmAudio.Stop();
+        SoundManager.instance.eftAudio.Stop();
         SceneManager.LoadScene("KartSelect Scene");
     }
     

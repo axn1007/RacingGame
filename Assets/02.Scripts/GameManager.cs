@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public Transform sPos;
     //public GameObject wheels;
     public GameObject player;
+    public Image oilE;
 
     // 타이머
     public TextMeshProUGUI text;
@@ -72,6 +73,8 @@ public class GameManager : MonoBehaviour
 
         // 신호등 호출
         StartCoroutine(TrafficLight());
+        // 신호등 사운드
+        StartCoroutine(TLSound());
 
     }
 
@@ -120,6 +123,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator TLSound()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Traffic);
+
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Traffic);
+
+        yield return new WaitForSeconds(1.0f);
+
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Traffic2);
+
+        yield return new WaitForSeconds(0.1f);
+
+        SoundManager.instance.PlayBGM(SoundManager.BGM.BGM_Racing);
+    }
+
     // 주유 상태바
     IEnumerator OilState()
     {
@@ -134,6 +156,10 @@ public class GameManager : MonoBehaviour
 
             if(slider.value == 0 || oilNum == 0)
             {
+                SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Oil);
+
+                oilE.gameObject.SetActive(true);
+
                 oilNum = 0;
                 oilText.text = ((int)oilNum).ToString();
 
@@ -142,6 +168,8 @@ public class GameManager : MonoBehaviour
                 player.transform.position = sPos.position;
                 player.transform.rotation = sPos.rotation;
 
+                SoundManager.instance.eftAudio.Stop();
+                oilE.gameObject.SetActive(true);
                 slider.value = 1;
                 oilNum = 50;
 

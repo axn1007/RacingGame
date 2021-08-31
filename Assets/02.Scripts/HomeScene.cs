@@ -22,6 +22,8 @@ public class HomeScene : MonoBehaviour
     {
         nav = kart.GetComponent<NavMeshAgent>();
 
+        StartCoroutine(HomeSound());
+
         YouMove();
         ToMove();
         RunMove();
@@ -42,6 +44,17 @@ public class HomeScene : MonoBehaviour
         //    nav.SetDestination(pos1.position);
         //    kart.transform.forward = pos1.transform.forward;
         //}
+    }
+
+    IEnumerator HomeSound()
+    {
+        // Nav자동차 이펙트
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_HomeCar);
+
+        yield return new WaitForSeconds(1.2f);
+
+        // 인트로 배경음
+        SoundManager.instance.PlayBGM(SoundManager.BGM.BGM_Home);
     }
 
     private void YouMove()
@@ -71,18 +84,11 @@ public class HomeScene : MonoBehaviour
         }
     }
 
-    public void OnClickTutorialBtn()
-    {
-        StartCoroutine(LoadScene());
-
-        //SceneManager.LoadScene("Tutorial Scene");
-        //AsyncOperation op = SceneManager.LoadSceneAsync("Tutorial Scene");
-
-        //op.allowSceneActivation = false;
-    }
-
     public void OnClickGoBtn()
     {
+        SoundManager.instance.bgmAudio.Stop();
+        SoundManager.instance.eftAudio.Stop();
+
         SceneManager.LoadScene("Next Scene");
         //SceneManager.LoadScene("Tutorial Scene");
         //SceneManager.LoadScene("KartSelect Scene");
@@ -91,6 +97,17 @@ public class HomeScene : MonoBehaviour
     public void OnClickExitBtn()
     {
         Application.Quit();
+    }
+
+    /* 비동기 씬전환 보류
+    public void OnClickTutorialBtn()
+    {
+        StartCoroutine(LoadScene());
+
+        //SceneManager.LoadScene("Tutorial Scene");
+        //AsyncOperation op = SceneManager.LoadSceneAsync("Tutorial Scene");
+
+        //op.allowSceneActivation = false;
     }
 
     IEnumerator LoadScene()
@@ -115,5 +132,5 @@ public class HomeScene : MonoBehaviour
 
         //op.allowSceneActivation = true;
         //yield break;
-    }
+    } */
 }

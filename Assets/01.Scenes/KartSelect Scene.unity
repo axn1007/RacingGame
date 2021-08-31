@@ -2848,6 +2848,10 @@ MonoBehaviour:
   - {fileID: 1585510206}
   - {fileID: 1298579015}
   show: {fileID: 71037104}
+  kartBtn:
+  - {fileID: 325616590}
+  - {fileID: 1327761417}
+  - {fileID: 1563380669}
   kartSelect:
   - {fileID: 878193999}
   - {fileID: 325616587}

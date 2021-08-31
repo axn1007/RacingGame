@@ -22,6 +22,9 @@ public class HelpTyping : MonoBehaviour
 
     void Start()
     {
+        SoundManager.instance.bgmAudio.volume = 0.3f;
+        SoundManager.instance.PlayBGM(SoundManager.BGM.BGM_Tuto);
+
         StartCoroutine(RuleTyping());
     }
 
@@ -38,7 +41,10 @@ public class HelpTyping : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        for(int i = 0; i < ruleTyping.Length; i++)
+        // 타이핑 소리
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
+
+        for (int i = 0; i < ruleTyping.Length; i++)
         {
             tx.text = ruleTyping.Substring(0, i);
 
@@ -56,12 +62,16 @@ public class HelpTyping : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
+
         for (int u = 0; u < ruleTyping3.Length; u++)
         {
             tx3.text = ruleTyping3.Substring(0, u);
 
             yield return new WaitForSeconds(0.13f);
         }
+
+        SoundManager.instance.eftAudio.Stop();
     }
 
     IEnumerator TypingStart()
@@ -70,22 +80,29 @@ public class HelpTyping : MonoBehaviour
 
         helpImage.gameObject.SetActive(true);
 
-        for(int i = 0; i < typing.Length; i++)
+        // 타이핑 소리
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
+
+        for (int i = 0; i < typing.Length; i++)
         {
             text.text = typing.Substring(0, i);
 
             yield return new WaitForSeconds(0.13f);
         }
+        SoundManager.instance.eftAudio.Stop();
 
         yield return new WaitForSeconds(1f);
 
-        for(int y = 0; y < typing2.Length; y++)
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
+
+        for (int y = 0; y < typing2.Length; y++)
         {
             text.text = typing2.Substring(0, y);
 
             yield return new WaitForSeconds(0.11f);
         }
 
+        SoundManager.instance.eftAudio.Stop();
         yield return new WaitForSeconds(1f);
         helpImage.gameObject.SetActive(false);
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 enum KartState
 {
@@ -15,7 +16,7 @@ public class KartSelectManager : MonoBehaviour
     public GameObject[] showKart;
     KartState state = new KartState();
     public GameObject show;
-    //public GameObject car;
+    public Image[] kartBtn;
 
     public GameObject[] kartSelect;
     public GameObject kartCustom;
@@ -31,6 +32,9 @@ public class KartSelectManager : MonoBehaviour
     void Start()
     {
         state = (KartState)DataManager.nowPlayer.kartState;
+
+        SoundManager.instance.bgmAudio.volume = 0.2f;
+        SoundManager.instance.PlayBGM(SoundManager.BGM.BGM_KartSel);
 
         //racerMat = showKart[0].transform.Find("Racer_Red").
         //car.transform.GetComponent<MeshRenderer>().material.shader = Shader.Find("Kart");
@@ -61,6 +65,11 @@ public class KartSelectManager : MonoBehaviour
         DataManager.nowPlayer.kartState = (int)state;
         DataManager.instance.Save(DataManager.nowPlayer);
 
+        kartBtn[0].color = Color.gray;
+        kartBtn[1].color = Color.white;
+        kartBtn[2].color = Color.white;
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Kart);
+
         showKart[0].gameObject.SetActive(true);
         showKart[1].gameObject.SetActive(false);
         showKart[2].gameObject.SetActive(false);
@@ -73,6 +82,11 @@ public class KartSelectManager : MonoBehaviour
         DataManager.nowPlayer.kartState = (int)state;
         DataManager.instance.Save(DataManager.nowPlayer);
 
+        kartBtn[1].color = Color.gray;
+        kartBtn[0].color = Color.white;
+        kartBtn[2].color = Color.white;
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Kart);
+
         showKart[1].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
         showKart[2].gameObject.SetActive(false);
@@ -84,6 +98,11 @@ public class KartSelectManager : MonoBehaviour
         state = KartState.KART_TRAIN;
         DataManager.nowPlayer.kartState = (int)state;
         DataManager.instance.Save(DataManager.nowPlayer);
+
+        kartBtn[2].color = Color.gray;
+        kartBtn[0].color = Color.white;
+        kartBtn[1].color = Color.white;
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Kart);
 
         showKart[2].gameObject.SetActive(true);
         showKart[0].gameObject.SetActive(false);
@@ -103,6 +122,8 @@ public class KartSelectManager : MonoBehaviour
     } */
     public void OnClickRacing()
     {
+        SoundManager.instance.bgmAudio.Stop();
+
         isRacingBtn = true;
         SceneManager.LoadScene("Next Scene");
         //SceneManager.LoadScene("Racing Scene");

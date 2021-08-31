@@ -36,12 +36,12 @@ public class NextSceneManager : MonoBehaviour
         moveMove();
 
         currTime += Time.deltaTime;
-        if (currTime > 3)
+        if (currTime > 2.5)
         {
             SceneManager.LoadScene("Tutorial Scene");
         }
 
-        if(KartSelectManager.isRacingBtn == true && currTime > 3)
+        if(KartSelectManager.isRacingBtn == true && currTime > 2.5)
         {
             SceneManager.LoadScene("Racing Scene");
         }

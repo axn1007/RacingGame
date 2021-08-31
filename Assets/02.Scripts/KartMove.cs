@@ -18,7 +18,7 @@ public class KartMove : MonoBehaviour
     public float radius = 6f;
 
     [Tooltip("바퀴에 가해지는 최대 토크")]
-    public float maxTorque = 7000f;
+    public float maxTorque = 6000f;
     [Tooltip("바퀴의 최대 조향각")]
     public float maxAngle = 30f;
     [Tooltip("바퀴에 가해지는 최대 제동 토크")]
@@ -43,7 +43,7 @@ public class KartMove : MonoBehaviour
 
     void Start()
     {
-        // 바퀴 모델을 태크를 통해 자동으로 찾아온다.
+        // 바퀴 모델을 태그를 통해 자동으로 찾아온다.
         wheelMesh = GameObject.FindGameObjectsWithTag("WHEELMESH");
 
         for(int i = 0; i < wheelMesh.Length; i++)
@@ -105,13 +105,25 @@ public class KartMove : MonoBehaviour
             //wheels[i].steerAngle = maxAngle * hInput;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 10000)
+        if(GameManager.instance.isGreen == true & Input.GetKey(KeyCode.W))
+        {
+            SoundManager.instance.eftAudio.volume = 0.5f;
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_kartGo);
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Brake);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 8000)
         {
             maxTorque += power;
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Accel);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            maxTorque = 3000f;
+            maxTorque = 4000f;
         }
 
         KPH = rb.velocity.magnitude * 3.6f;
