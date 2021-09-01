@@ -27,13 +27,16 @@ public class EndingSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        // JsonÀ¸·Î ÀúÀåÇØµÎ¾ú´ø ÁÖÇà ½Ã°£À» ºÒ·¯¿À±â
         time.text = DataManager.nowPlayer.time;
 
+        // ÆøÁ× ÄÚ·çÆ¾ ½ÇÇà
         StartCoroutine(FireWork());
 
         //rankingRank = ranking.transform.Find("Rank");
     }
 
+    // Input Field¿¡ ÇÑ±ÛÀÚ ÀÌ»ó ÀÔ·Â½Ã ¹öÆ° È°¼ºÈ­ ¹× ¼ýÀÚ, ¿µ¼Ò¹®ÀÚ, ¿µ´ë¹®ÀÚ, ÇÑ±Û ÀÔ·Â °¡´É
     private void FixedUpdate()
     {
         Regex.IsMatch(UserNameInput.text, "^[0-9a-zA-Z°¡-ÆR]*$");
@@ -46,6 +49,7 @@ public class EndingSceneManager : MonoBehaviour
         
     }
 
+    // Scroll View Ã¢¿¡ ½Ã°£°ú À¯ÀúÀÌ¸§ ¶ç¿ì±â
     public void OnClickRanking()
     {
         
@@ -60,20 +64,37 @@ public class EndingSceneManager : MonoBehaviour
         userInput.gameObject.SetActive(false);
         enterBtn.gameObject.SetActive(false);
     }
+
+    // ÆøÁ× ÅÍÁö´Â µíÇÑ È¿°ú
     IEnumerator FireWork()
     {
-        iTween.MoveTo(images[0], iTween.Hash("x", -400, "easeType", "easeOutElastic", "delay", 0.5f));
-        iTween.MoveTo(images[1], iTween.Hash("x", 400, "easeType", "easeOutElastic", "delay", 0.5f));
+        // ÀÚ¿¬½º·¯¿î ¿òÁ÷ÀÓÀ» À§ÇØ itween ½ÇÇà µµÁß ¿ÀºêÁ§Æ® È°¼ºÈ­
+        iTween.MoveTo(images[0], iTween.Hash("x", 500, "easeType", "easeOutElastic", "delay", 0.5f));
+        iTween.MoveTo(images[1], iTween.Hash("x", 1420, "easeType", "easeOutElastic", "delay", 0.5f));
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
+        images[0].gameObject.SetActive(true);
+        images[1].gameObject.SetActive(true);
 
-        iTween.MoveTo(images[2], iTween.Hash("x", -605, "easeType", "easeOutElastic", "delay", 0.4f));
+        yield return new WaitForSeconds(0.5f);
+
+        images[2].gameObject.SetActive(true);
+        iTween.MoveTo(images[2], iTween.Hash("x", 380, "easeType", "easeOutElastic", "delay", 0.4f));
+
         yield return new WaitForSeconds(0.1f);
-        iTween.MoveTo(images[3], iTween.Hash("x", 605, "easeType", "easeOutElastic", "delay", 0.3f));
-        iTween.MoveTo(images[4], iTween.Hash("x", -752, "easeType", "easeOutElastic", "delay", 0.4f));
+
+        images[3].gameObject.SetActive(true);
+        images[4].gameObject.SetActive(true);
+        iTween.MoveTo(images[3], iTween.Hash("x", 1540, "easeType", "easeOutElastic", "delay", 0.3f));
+        iTween.MoveTo(images[4], iTween.Hash("x", 250, "easeType", "easeOutElastic", "delay", 0.4f));
+
         yield return new WaitForSeconds(0.1f);
-        iTween.MoveTo(images[5], iTween.Hash("x", 752, "easeType", "easeOutElastic", "delay", 0.5f));
-        iTween.MoveTo(images[6], iTween.Hash("x", -650, "easeType", "easeOutElastic", "delay", 0.3f));
-        iTween.MoveTo(images[7], iTween.Hash("x", 650, "easeType", "easeOutElastic", "delay", 0.3f));
+
+        images[5].gameObject.SetActive(true);
+        images[6].gameObject.SetActive(true);
+        images[7].gameObject.SetActive(true);
+        iTween.MoveTo(images[5], iTween.Hash("x", 1670, "easeType", "easeOutElastic", "delay", 0.5f));
+        iTween.MoveTo(images[6], iTween.Hash("x", 340, "easeType", "easeOutElastic", "delay", 0.3f));
+        iTween.MoveTo(images[7], iTween.Hash("x", 1580, "easeType", "easeOutElastic", "delay", 0.3f));
     }
 }
