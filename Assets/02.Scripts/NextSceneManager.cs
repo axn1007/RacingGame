@@ -36,9 +36,9 @@ public class NextSceneManager : MonoBehaviour
         moveMove();
 
         currTime += Time.deltaTime;
-        if (currTime > 2.5)
+        if (KartSelectManager.isRacingBtn == false && currTime > 2)
         {
-            SceneManager.LoadScene("Tutorial Scene");
+            SceneManager.LoadScene("Tutorial Scene_1");
         }
 
         if(KartSelectManager.isRacingBtn == true && currTime > 2.5)

@@ -21,6 +21,8 @@ public class SoundManager : MonoBehaviour
     {
         EFT_HomeCar,
         EFT_TutoTyping,
+        EFT_TutoKey,
+        EFT_TutoCrab,
         EFT_Kart,
         EFT_Traffic,
         EFT_Traffic2,

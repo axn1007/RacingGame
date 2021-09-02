@@ -10,17 +10,18 @@ public class TutorialScene : MonoBehaviour
 
     public GameObject optionImage;
     public GameObject optionImage1;
-    public static bool isPractice = false;
+    //public static bool isPractice = false;
     bool isOption = false;
     bool isOption1 = false;
 
 
     public void OnClickPracticeBtn()
     {
-        isPractice = true;
-        methodCanvas.gameObject.SetActive(false);
         SoundManager.instance.eftAudio.Stop();
-        practiceCanvas.gameObject.SetActive(true);
+        SceneManager.LoadScene("Tutorial Scene_2");
+        //isPractice = true;
+        //methodCanvas.gameObject.SetActive(false);
+        //practiceCanvas.gameObject.SetActive(true);
 
     }
 

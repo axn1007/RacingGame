@@ -6,11 +6,11 @@ using TMPro;
 
 public class HelpTyping : MonoBehaviour
 {
-    // PracticeCanvas
-    public TextMeshProUGUI text;
-    public GameObject helpImage;
-    public string typing  = "V키를 누르면 화면 전환이 가능합니다. ";
-    public string typing2 = " W,S,A,D,Q,E 키를 눌러서 자유롭게   주행하며    주행연습을 해보세요! ";
+    
+    //public TextMeshProUGUI text;
+    //public GameObject helpImage;
+    //public string typing  = "V키를 누르면 화면 전환이 가능합니다. ";
+    //public string typing2 = " W,S,A,D,Q,E 키를 눌러서 자유롭게   주행하며    주행연습을 해보세요! ";
 
     // MethodCanvas
     public TextMeshProUGUI tx;
@@ -22,20 +22,24 @@ public class HelpTyping : MonoBehaviour
 
     void Start()
     {
+        //TutorialKartMove.instance.enabled = false;
+
         SoundManager.instance.bgmAudio.volume = 0.3f;
         SoundManager.instance.PlayBGM(SoundManager.BGM.BGM_Tuto);
 
         StartCoroutine(RuleTyping());
     }
 
+    /*
     private void FixedUpdate()
     {
-        if (TutorialScene.isPractice == true)
+        if (TutorialScene.isPractice == true || TutorialScene.isPractice2 == true)
         {
+            TutorialKey();
+            //StartCoroutine(KeyStart());
             TutorialScene.isPractice = false;
-            StartCoroutine(TypingStart());
         }
-    }
+    } */
 
     IEnumerator RuleTyping()
     {
@@ -74,36 +78,148 @@ public class HelpTyping : MonoBehaviour
         SoundManager.instance.eftAudio.Stop();
     }
 
-    IEnumerator TypingStart()
+    /*
+    IEnumerator KeyStart()
     {
-        yield return new WaitForSeconds(0.5f);
-
-        helpImage.gameObject.SetActive(true);
-
-        // 타이핑 소리
-        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
-
-        for (int i = 0; i < typing.Length; i++)
+        Keys[0].SetActive(true);
+        if(Input.GetKeyDown("w"))
         {
-            text.text = typing.Substring(0, i);
+            print("");
+            //yield return new WaitForSeconds(0.5f);
 
-            yield return new WaitForSeconds(0.13f);
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[0].SetActive(false);
+            Keys[1].SetActive(true);
         }
-        SoundManager.instance.eftAudio.Stop();
-
-        yield return new WaitForSeconds(1f);
-
-        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
-
-        for (int y = 0; y < typing2.Length; y++)
+        if(Input.GetKeyDown(KeyCode.S))
         {
-            text.text = typing2.Substring(0, y);
+            //yield return new WaitForSeconds(0.5f);
 
-            yield return new WaitForSeconds(0.11f);
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[1].SetActive(false);
+            Keys[2].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            //yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[2].SetActive(false);
+            Keys[3].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            //yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[3].SetActive(false);
+            Keys[4].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+           // yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[4].SetActive(false);
+            Keys[5].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+           // yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[5].SetActive(false);
+            Keys[6].SetActive(true);
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoCrab);
         }
 
-        SoundManager.instance.eftAudio.Stop();
-        yield return new WaitForSeconds(1f);
-        helpImage.gameObject.SetActive(false);
-    }
+        yield return null;
+
+        //yield return new WaitForSeconds(0.5f);
+
+        //helpImage.gameObject.SetActive(true);
+
+        //// 타이핑 소리
+        //SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
+
+        //for (int i = 0; i < typing.Length; i++)
+        //{
+        //    text.text = typing.Substring(0, i);
+
+        //    yield return new WaitForSeconds(0.13f);
+        //}
+        //SoundManager.instance.eftAudio.Stop();
+
+        //yield return new WaitForSeconds(1f);
+
+        //SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoTyping);
+
+        //for (int y = 0; y < typing2.Length; y++)
+        //{
+        //    text.text = typing2.Substring(0, y);
+
+        //    yield return new WaitForSeconds(0.11f);
+        //}
+
+        //SoundManager.instance.eftAudio.Stop();
+        //yield return new WaitForSeconds(1f);
+        //helpImage.gameObject.SetActive(false);
+    } */
+
+    /*
+    void TutorialKey()
+    {
+        Keys[0].SetActive(true);
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            print("W");
+            //yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[0].SetActive(false);
+            Keys[1].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            //yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[1].SetActive(false);
+            Keys[2].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            //yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[2].SetActive(false);
+            Keys[3].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            //yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[3].SetActive(false);
+            Keys[4].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            // yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[4].SetActive(false);
+            Keys[5].SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            // yield return new WaitForSeconds(0.5f);
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoKey);
+            Keys[5].SetActive(false);
+            Keys[6].SetActive(true);
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_TutoCrab);
+        }
+
+    }*/
 }

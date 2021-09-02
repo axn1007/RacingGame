@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TutorialKartMove : MonoBehaviour
 {
+    public static TutorialKartMove instance;
+
     public WheelCollider[] wheels = new WheelCollider[4];
     public Transform[] tires = new Transform[4];
 
@@ -20,6 +22,14 @@ public class TutorialKartMove : MonoBehaviour
     public float power = 500f;
 
     Rigidbody rb;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -63,13 +73,24 @@ public class TutorialKartMove : MonoBehaviour
             //wheels[i].steerAngle = maxAngle * hInput;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 7000)
+        if (Input.GetKey(KeyCode.W))
+        {
+            SoundManager.instance.eftAudio.volume = 0.5f;
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_kartGo);
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Brake);
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 8000)
         {
             maxTorque += power;
+
+            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Accel);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            maxTorque = 3000f;
+            maxTorque = 4000f;
         }
     }
 
@@ -84,4 +105,6 @@ public class TutorialKartMove : MonoBehaviour
             tires[i].rotation = quat;
         }
     }
+
+
 }

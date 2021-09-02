@@ -37,8 +37,6 @@ public class KartMove : MonoBehaviour
         {
             instance = this;
         }
-
-        
     }
 
     void Start()
@@ -110,12 +108,11 @@ public class KartMove : MonoBehaviour
             SoundManager.instance.eftAudio.volume = 0.5f;
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_kartGo);
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        else if(Input.GetKeyDown(KeyCode.Space))
         {
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Brake);
         }
-
-        if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 8000)
+        else if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 8000)
         {
             maxTorque += power;
 
