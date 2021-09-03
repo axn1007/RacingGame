@@ -17,6 +17,7 @@ public class HomeScene : MonoBehaviour
     public GameObject optionImage;
     bool isOption = false;
 
+    public GameObject ExitImage;
 
     void Start()
     {
@@ -95,6 +96,17 @@ public class HomeScene : MonoBehaviour
     }
 
     public void OnClickExitBtn()
+    {
+        Time.timeScale = 0;
+        ExitImage.SetActive(true);
+    }
+    public void OnClickXBtn()
+    {
+        ExitImage.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OnClickExitExitBtn()
     {
         Application.Quit();
     }

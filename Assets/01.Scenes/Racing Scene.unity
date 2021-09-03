@@ -8684,7 +8684,7 @@ MonoBehaviour:
   maxTorque: 6000
   maxAngle: 30
   brakeTorque: 10000
-  power: 1000
+  power: 600
   KPH: 0
   downForce: 100
 --- !u!114 &1893513286

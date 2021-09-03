@@ -3761,7 +3761,7 @@ GameObject:
   - component: {fileID: 638325900}
   - component: {fileID: 638325899}
   m_Layer: 5
-  m_Name: GameRule
+  m_Name: GameRuleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8632,8 +8632,8 @@ MonoBehaviour:
     \uD328\uB110\uD2F0\uAC00 \uC788\uC73C\uB2C8 \uCD5C\uB300\uD55C \uD53C\uD574\uC11C
     \uACE8\uC778\uC744 \uD558\uC2ED\uC2DC\uC624! "
   ruleTyping3: "3. Oil \uC0C1\uD0DC\uBC14\uAC00 0\uC774 \uB418\uBA74 \uCD9C\uBC1C\uC810\uC73C\uB85C
-    \uB418\uB3CC\uC544\uAC00\uB2C8 \uC544\uC774\uD15C\uC744 \uD68D\uB4DD\uD558\uC5EC
-    \uC0AC\uC6A9\uD558\uAC70\uB098 \uC8FC\uC720\uC18C\uC5D0 \uBC29\uBB38\uD558\uC138\uC694! "
+    \uB418\uB3CC\uC544\uAC00\uB2C8 \uC8FC\uC720\uD1B5 \uC544\uC774\uD15C\uC744 \uD68D\uB4DD\uD558\uC5EC
+    \uC0AC\uC6A9\uD558\uC138\uC694! "
 --- !u!1 &1342492715
 GameObject:
   m_ObjectHideFlags: 0

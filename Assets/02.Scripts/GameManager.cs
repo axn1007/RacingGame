@@ -154,12 +154,14 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             //print(slider.value);
 
-            if(slider.value == 0 || oilNum == 0)
+            if (slider.value <= 10 || oilNum <= 10)
             {
                 SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Oil);
 
                 oilE.gameObject.SetActive(true);
-
+            }
+            if (slider.value == 0 || oilNum == 0)
+            {
                 oilNum = 0;
                 oilText.text = ((int)oilNum).ToString();
 

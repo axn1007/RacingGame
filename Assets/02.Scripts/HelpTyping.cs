@@ -18,7 +18,7 @@ public class HelpTyping : MonoBehaviour
     public TextMeshProUGUI tx3;
     public string ruleTyping  = "1. 트랙 한바퀴를 돌아 결승점까지 빨리 도착하여 랭킹에 나의 순위를 올립시다! ";
     public string ruleTyping2 = "2. 장애물과 부딪히면 다양한 패널티가 있으니 최대한 피해서 골인을 하십시오! ";
-    public string ruleTyping3 = "3. Oil 상태바가 0이 되면 출발점으로 되돌아가니 아이템을 획득하여 사용하거나 주유소에 방문하세요! ";
+    public string ruleTyping3 = "3. Oil 상태바가 0이 되면 출발점으로 되돌아가니 주유통 아이템을 획득하여 사용하세요! ";
 
     void Start()
     {

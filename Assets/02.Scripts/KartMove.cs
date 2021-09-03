@@ -24,12 +24,19 @@ public class KartMove : MonoBehaviour
     [Tooltip("바퀴에 가해지는 최대 제동 토크")]
     public float brakeTorque = 10000f;
     [Tooltip("바퀴에 가해지는 가속도")]
-    public float power  = 1000f;
-
-    public float KPH;
+    public float power  = 600f;
 
     Rigidbody rb;
     public float downForce;
+    // 계기판
+    public float KPH;
+
+    // 카트 주행 사운드
+    private float startVolume = 0.5f;
+    private float maxVolume = 0.7f;
+
+    private float startPitch = 0.5f;
+    private float maxPitch = 1.0f;
 
     private void Awake()
     {
@@ -52,12 +59,17 @@ public class KartMove : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -1, 0);
+
+        // 카트 주행 초기 사운드
+        SoundManager.instance.driveAudio.volume = startVolume;
+        SoundManager.instance.driveAudio.pitch = startPitch;
     }
 
     private void FixedUpdate()
     {
         WheelMeshposAni();
         kartInput();
+        KartDriveSound();
     }
 
     // 카트 주행 Input
@@ -73,7 +85,7 @@ public class KartMove : MonoBehaviour
         vInput = Input.GetAxis(v);
 
         // 브레이크
-        float handBrake = Input.GetKey(KeyCode.Space) ? brakeTorque : 0;
+        float handBrake = Input.GetKeyDown(KeyCode.Space) ? brakeTorque : 0;
 
         // 자동차 구동 (4륜)
         for (int i = 0; i < wheels.Length; i++)
@@ -104,12 +116,12 @@ public class KartMove : MonoBehaviour
             //wheels[i].steerAngle = maxAngle * hInput;
         }
 
-        if(GameManager.instance.isGreen == true & Input.GetKey(KeyCode.W))
-        {
-            SoundManager.instance.eftAudio.volume = 0.5f;
-            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_kartGo);
-        }
-        else if(Input.GetKeyDown(KeyCode.Space))
+        //if(GameManager.instance.isGreen == true & Input.GetKey(KeyCode.W))
+        //{
+        //    SoundManager.instance.eftAudio.volume = 0.5f;
+        //    SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_kartGo);
+        //}
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Brake);
         }
@@ -147,6 +159,13 @@ public class KartMove : MonoBehaviour
             wheelMesh[i].transform.position = pos;
             wheelMesh[i].transform.rotation = quat;
         }
+    }
+
+    // 카트 주행 사운드
+    void KartDriveSound()
+    {
+        SoundManager.instance.driveAudio.volume = Mathf.Lerp(startVolume, maxVolume, KPH / 200);
+        SoundManager.instance.driveAudio.pitch = Mathf.Lerp(startPitch, maxPitch, KPH / 200);
     }
 
     private void OnTriggerExit(Collider other)
