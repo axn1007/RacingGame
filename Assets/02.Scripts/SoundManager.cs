@@ -41,6 +41,9 @@ public class SoundManager : MonoBehaviour
     // BGM 오디오 플레이하는 AudioSource
     public AudioSource eftAudio;
 
+    // Racing Scene에서 차량 주행 소리 플레이하는 AudioSource ( 다른 오디오랑 겹쳐서 따로 해주는게 좋을 거 같아서 )
+    public AudioSource kartGoAudio;
+
     // BGM 음원파일
     public AudioClip[] bgms;
 

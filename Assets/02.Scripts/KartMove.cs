@@ -72,6 +72,7 @@ public class KartMove : MonoBehaviour
         hInput = Input.GetAxis(h);
         vInput = Input.GetAxis(v);
 
+        // 브레이크
         float handBrake = Input.GetKey(KeyCode.Space) ? brakeTorque : 0;
 
         // 자동차 구동 (4륜)
@@ -80,7 +81,7 @@ public class KartMove : MonoBehaviour
             wheels[i].motorTorque = maxTorque * vInput;
             wheels[i].brakeTorque = handBrake;
         }
-        // 좌, 우
+        // 좌, 우 // 애커먼 스티어링 공식 (좌, 우로 이동할 때 심하게 미끄러지는 것을 조금이라도 방지)
         for (int i = 0; i < wheels.Length -2; i++)
         {
             if (hInput > 0)
@@ -123,6 +124,8 @@ public class KartMove : MonoBehaviour
             maxTorque = 4000f;
         }
 
+        // 계기판
+        // rigidbody 속력을 KPH로 바꿔주는 공식  = 3.6은 (60 * 60 / 1000)
         KPH = rb.velocity.magnitude * 3.6f;
 
         //if(wheels[wheels.Length].transform.localPosition.z < 0)
