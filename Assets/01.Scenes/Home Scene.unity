@@ -2374,7 +2374,7 @@ MonoBehaviour:
   kart: {fileID: 1041584182}
   pos: {fileID: 49611374}
   optionImage: {fileID: 1384731881}
-  ExitImage: {fileID: 0}
+  ExitImage: {fileID: 1546213333}
 --- !u!4 &1199372063
 Transform:
   m_ObjectHideFlags: 0
@@ -2944,7 +2944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1546213334
 RectTransform:
   m_ObjectHideFlags: 0

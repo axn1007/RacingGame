@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using UnityEngine.SceneManagement;
 
 public class EndingSceneManager : MonoBehaviour
 {
@@ -19,8 +20,17 @@ public class EndingSceneManager : MonoBehaviour
     
     // ScrollView - Content
     public Transform content;
-    // 랭킹 정보
+    // 순위 정보
     public GameObject ranking;
+
+    public GameObject optionImage;
+    bool isOption = false;
+
+    // 엔딩씬에서 다시 레이싱 버튼을 눌렀는지 확인을 위해서
+    public static bool isEndRacingBtn = false;
+
+    // 게임 종료 전 붙잡기 위한 UI
+    public GameObject ExitImage;
 
     // 폭죽
     public GameObject[] images;
@@ -63,6 +73,47 @@ public class EndingSceneManager : MonoBehaviour
 
         userInput.gameObject.SetActive(false);
         enterBtn.gameObject.SetActive(false);
+    }
+
+    public void OnClickRacing()
+    {
+        isEndRacingBtn = true;
+        SceneManager.LoadScene("Next Scene");
+    }
+
+    public void OnClcikOptionbtn()
+    {
+        if (!isOption)
+        {
+            optionImage.gameObject.SetActive(true);
+            isOption = true;
+        }
+        else
+        {
+            optionImage.gameObject.SetActive(false);
+            isOption = false;
+        }
+    }
+
+    public void OnClickHomeBtn()
+    {
+        SceneManager.LoadScene("Home Scene");
+    }
+
+    public void OnClickExitBtn()
+    {
+        Time.timeScale = 0;
+        ExitImage.SetActive(true);
+    }
+    public void OnClickXBtn()
+    {
+        ExitImage.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OnClickExitExitBtn()
+    {
+        Application.Quit();
     }
 
     // 폭죽 터지는 듯한 효과

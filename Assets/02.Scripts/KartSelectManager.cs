@@ -27,7 +27,11 @@ public class KartSelectManager : MonoBehaviour
     public GameObject optionImage;
     bool isOption = false;
 
+    // 카트선택 씬에서 레이싱 버튼을 눌렀는지 확인을 위해서 (false면 튜토리얼 씬으로, true면 레이싱 씬으로 이동)
     public static bool isRacingBtn = false;
+
+    // 게임 종료 전 붙잡기 위한 UI
+    public GameObject ExitImage;
 
     void Start()
     {
@@ -149,6 +153,17 @@ public class KartSelectManager : MonoBehaviour
     }
 
     public void OnClickExitBtn()
+    {
+        Time.timeScale = 0;
+        ExitImage.SetActive(true);
+    }
+    public void OnClickXBtn()
+    {
+        ExitImage.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OnClickExitExitBtn()
     {
         Application.Quit();
     }

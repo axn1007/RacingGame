@@ -45,6 +45,11 @@ public class NextSceneManager : MonoBehaviour
         {
             SceneManager.LoadScene("Racing Scene");
         }
+
+        if(EndingSceneManager.isEndRacingBtn == true && currTime > 2)
+        {
+            SceneManager.LoadScene("Racing Scene");
+        }
     }
 
     void moveMove()

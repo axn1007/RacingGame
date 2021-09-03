@@ -17,6 +17,7 @@ public class HomeScene : MonoBehaviour
     public GameObject optionImage;
     bool isOption = false;
 
+    // 게임 종료 전 붙잡기 위한 UI
     public GameObject ExitImage;
 
     void Start()

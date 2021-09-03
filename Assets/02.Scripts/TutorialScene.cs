@@ -14,6 +14,9 @@ public class TutorialScene : MonoBehaviour
     bool isOption = false;
     bool isOption1 = false;
 
+    // 게임 종료 전 붙잡기 위한 UI
+    public GameObject ExitImage;
+
 
     public void OnClickPracticeBtn()
     {
@@ -66,6 +69,17 @@ public class TutorialScene : MonoBehaviour
     }
 
     public void OnClickExitBtn()
+    {
+        Time.timeScale = 0;
+        ExitImage.SetActive(true);
+    }
+    public void OnClickXBtn()
+    {
+        ExitImage.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OnClickExitExitBtn()
     {
         Application.Quit();
     }

@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
     // 정지버튼
     public bool isPause = false;
 
+    // 게임 종료 전 붙잡기 위한 UI
+    public GameObject ExitImage;
+
     // 골 확인
     public static bool isGoal1 = false;
     public static bool isGoal2 = false;
@@ -252,6 +255,17 @@ public class GameManager : MonoBehaviour
     }
 
     public void OnClickExitBtn()
+    {
+        Time.timeScale = 0;
+        ExitImage.SetActive(true);
+    }
+    public void OnClickXBtn()
+    {
+        ExitImage.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void OnClickExitExitBtn()
     {
         Application.Quit();
     }
