@@ -164,6 +164,7 @@ public class KartMove : MonoBehaviour
     // 카트 주행 사운드
     void KartDriveSound()
     {
+        SoundManager.instance.driveAudio.enabled = true;
         SoundManager.instance.driveAudio.volume = Mathf.Lerp(startVolume, maxVolume, KPH / 200);
         SoundManager.instance.driveAudio.pitch = Mathf.Lerp(startPitch, maxPitch, KPH / 200);
     }

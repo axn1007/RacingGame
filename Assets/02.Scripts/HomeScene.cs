@@ -88,6 +88,9 @@ public class HomeScene : MonoBehaviour
 
     public void OnClickGoBtn()
     {
+        SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Button);
+        print(SoundManager.EFT.EFT_Button);
+
         SoundManager.instance.bgmAudio.Stop();
         SoundManager.instance.eftAudio.Stop();
 

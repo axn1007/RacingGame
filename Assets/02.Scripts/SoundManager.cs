@@ -32,7 +32,8 @@ public class SoundManager : MonoBehaviour
         EFT_Brake,
         EFT_Oil,
         EFT_Goal,
-        EFT_End
+        EFT_End,
+        EFT_Button
     }
 
     // BGM 오디오 플레이하는 AudioSource

@@ -6518,7 +6518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmAudio: {fileID: 2044760942}
   eftAudio: {fileID: 2044760945}
-  driveAudio: {fileID: 0}
+  driveAudio: {fileID: 2044760946}
   bgms:
   - {fileID: 8300000, guid: 6272de5c5dcc6e741845d96605f68bae, type: 3}
   - {fileID: 8300000, guid: 95dee62395b14d042b2939b8580e1fc1, type: 3}
@@ -6538,6 +6538,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2eeed8d627e2e6344b221e7c79e93bd8, type: 3}
   - {fileID: 8300000, guid: da288f426aa989a46b439fdb1720be41, type: 3}
   - {fileID: 8300000, guid: f96071f0dbdd5e94e98de840ccbc11b5, type: 3}
+  - {fileID: 8300000, guid: 372d3c386b8cb7e47bfceaae95d3ed21, type: 3}
 --- !u!4 &2044760944
 Transform:
   m_ObjectHideFlags: 0
@@ -6655,7 +6656,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044760941}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3f2c1ffd0da8d1b4ba4595daf9e69612, type: 3}
