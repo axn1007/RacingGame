@@ -1,1 +1,1 @@
-{"kartState":0,"UserNameArr":"","rankArr":[],"time":""}
+{"kartState":0,"UserNameArr":"","rankArr":"","userTime":0.0,"time":"","ranking":[]}

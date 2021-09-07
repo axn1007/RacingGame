@@ -73,12 +73,7 @@ public class TutorialKartMove : MonoBehaviour
             //wheels[i].steerAngle = maxAngle * hInput;
         }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            SoundManager.instance.eftAudio.volume = 0.5f;
-            SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_kartGo);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Brake);
         }

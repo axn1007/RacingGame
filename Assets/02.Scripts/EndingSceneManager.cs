@@ -37,6 +37,8 @@ public class EndingSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        //content = DataManager.nowPlayer.ranking[DataManager.nowPlayer.ranking.Length];
+
         // Json으로 저장해두었던 주행 시간을 불러오기
         time.text = DataManager.nowPlayer.time;
 
@@ -73,6 +75,11 @@ public class EndingSceneManager : MonoBehaviour
 
         userInput.gameObject.SetActive(false);
         enterBtn.gameObject.SetActive(false);
+    }
+
+    public void SaveRank()
+    {
+
     }
 
     public void OnClickRacing()

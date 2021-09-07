@@ -39,6 +39,8 @@ public class ItemManager : MonoBehaviour
             GameManager.instance.oilNum = 50;
             GameManager.instance.slider.value = 1;
 
+            GameManager.instance.oilE.gameObject.SetActive(false);
+
             if(oil2.activeSelf == true)
             {
                 oil2.gameObject.SetActive(false);

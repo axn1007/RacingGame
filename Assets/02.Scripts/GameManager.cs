@@ -157,10 +157,8 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             //print(slider.value);
 
-            if (slider.value <= 10 || oilNum <= 10)
+            if (slider.value <= 0.2 || oilNum <= 0.2)
             {
-                SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Oil);
-
                 oilE.gameObject.SetActive(true);
             }
             if (slider.value == 0 || oilNum == 0)
@@ -173,10 +171,9 @@ public class GameManager : MonoBehaviour
                 player.transform.position = sPos.position;
                 player.transform.rotation = sPos.rotation;
 
-                SoundManager.instance.eftAudio.Stop();
-                oilE.gameObject.SetActive(false);
                 slider.value = 1;
                 oilNum = 50;
+                oilE.gameObject.SetActive(false);
 
                 // 주유 상태바가 0일 때 출발점으로 되돌아가게 하기위해서
                 //if (kartLoad[0].gameObject.acti
@@ -212,6 +209,7 @@ public class GameManager : MonoBehaviour
         if (isGreen1)
         {
             time += Time.deltaTime;
+            
             ms = (int)((time - (int)time) * 100);
             ss = (int)(time % 60);
             mm = (int)(time / 60 % 60);
@@ -233,6 +231,7 @@ public class GameManager : MonoBehaviour
             StopCoroutine(Timer());
             isGreen1 = false;
 
+            DataManager.nowPlayer.userTime = time;
             DataManager.nowPlayer.time = text.text;
             //DataManager.instance.Save(DataManager.nowPlayer);
 

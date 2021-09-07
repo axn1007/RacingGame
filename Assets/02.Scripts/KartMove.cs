@@ -32,11 +32,11 @@ public class KartMove : MonoBehaviour
     public float KPH;
 
     // 카트 주행 사운드
-    private float startVolume = 0.5f;
-    private float maxVolume = 0.7f;
+    private float startVolume = 0.7f;
+    private float maxVolume = 1.0f;
 
-    private float startPitch = 0.5f;
-    private float maxPitch = 1.0f;
+    private float startPitch = 1.0f;
+    private float maxPitch = 2.0f;
 
     private void Awake()
     {
@@ -69,7 +69,10 @@ public class KartMove : MonoBehaviour
     {
         WheelMeshposAni();
         kartInput();
-        KartDriveSound();
+        //if(KPH > 10)
+        //{
+        //    KartDriveSound();
+        //}   
     }
 
     // 카트 주행 Input
@@ -85,7 +88,7 @@ public class KartMove : MonoBehaviour
         vInput = Input.GetAxis(v);
 
         // 브레이크
-        float handBrake = Input.GetKeyDown(KeyCode.Space) ? brakeTorque : 0;
+        float handBrake = Input.GetKey(KeyCode.Space) ? brakeTorque : 0;
 
         // 자동차 구동 (4륜)
         for (int i = 0; i < wheels.Length; i++)
@@ -116,16 +119,11 @@ public class KartMove : MonoBehaviour
             //wheels[i].steerAngle = maxAngle * hInput;
         }
 
-        //if(GameManager.instance.isGreen == true & Input.GetKey(KeyCode.W))
-        //{
-        //    SoundManager.instance.eftAudio.volume = 0.5f;
-        //    SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_kartGo);
-        //}
         if(Input.GetKeyDown(KeyCode.Space))
         {
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Brake);
         }
-        else if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 8000)
+        else if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 7000)
         {
             maxTorque += power;
 
@@ -165,8 +163,9 @@ public class KartMove : MonoBehaviour
     void KartDriveSound()
     {
         SoundManager.instance.driveAudio.enabled = true;
-        SoundManager.instance.driveAudio.volume = Mathf.Lerp(startVolume, maxVolume, KPH / 200);
-        SoundManager.instance.driveAudio.pitch = Mathf.Lerp(startPitch, maxPitch, KPH / 200);
+        SoundManager.instance.driveAudio.Play();
+        SoundManager.instance.driveAudio.volume = Mathf.Lerp(startVolume, maxVolume, KPH / 150);
+        SoundManager.instance.driveAudio.pitch = Mathf.Lerp(startPitch, maxPitch, KPH / 150);
     }
 
     private void OnTriggerExit(Collider other)

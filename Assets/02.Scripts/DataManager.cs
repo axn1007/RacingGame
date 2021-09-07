@@ -73,6 +73,8 @@ public class PlayerData
 {
     public int kartState = 0;
     public string UserNameArr;
-    public string[] rankArr;
+    public string rankArr;
+    public float userTime;
     public string time;
+    public GameObject[] ranking;
 }
