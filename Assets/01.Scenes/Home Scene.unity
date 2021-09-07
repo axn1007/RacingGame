@@ -936,7 +936,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 758671340}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1199372062}
+        m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
+        m_MethodName: OnClickEFTOffBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &758671340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,7 +1068,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 775906590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1199372062}
+        m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
+        m_MethodName: OnClickEFTOnBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &775906590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2374,6 +2398,11 @@ MonoBehaviour:
   kart: {fileID: 1041584182}
   pos: {fileID: 49611374}
   optionImage: {fileID: 1384731881}
+  optionBtn:
+  - {fileID: 1975608759}
+  - {fileID: 1609897731}
+  - {fileID: 775906590}
+  - {fileID: 758671340}
   ExitImage: {fileID: 1546213333}
 --- !u!4 &1199372063
 Transform:
@@ -3223,7 +3252,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1609897731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1199372062}
+        m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
+        m_MethodName: OnClickBGMOffBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1609897731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6037,7 +6078,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1975608759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1199372062}
+        m_TargetAssemblyTypeName: HomeScene, Assembly-CSharp
+        m_MethodName: OnClickBGMOnBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1975608759
 MonoBehaviour:
   m_ObjectHideFlags: 0

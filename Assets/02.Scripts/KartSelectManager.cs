@@ -30,6 +30,9 @@ public class KartSelectManager : MonoBehaviour
     // 카트선택 씬에서 레이싱 버튼을 눌렀는지 확인을 위해서 (false면 튜토리얼 씬으로, true면 레이싱 씬으로 이동)
     public static bool isRacingBtn = false;
 
+    // Option 버튼
+    public Image[] optionBtn;
+
     // 게임 종료 전 붙잡기 위한 UI
     public GameObject ExitImage;
 
@@ -145,6 +148,35 @@ public class KartSelectManager : MonoBehaviour
             optionImage.gameObject.SetActive(false);
             isOption = false;
         }
+    }
+
+    public void OnClickBGMOnBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = false;
+
+        optionBtn[0].color = Color.gray;
+        optionBtn[1].color = Color.white;
+    }
+    public void OnClickBGMOffBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = true;
+
+        optionBtn[1].color = Color.gray;
+        optionBtn[0].color = Color.white;
+    }
+    public void OnClickEFTOnBtn()
+    {
+        SoundManager.instance.eftAudio.mute = false;
+
+        optionBtn[2].color = Color.gray;
+        optionBtn[3].color = Color.white;
+    }
+    public void OnClickEFTOffBtn()
+    {
+        SoundManager.instance.eftAudio.mute = true;
+
+        optionBtn[3].color = Color.gray;
+        optionBtn[2].color = Color.white;
     }
 
     public void OnClickHomeBtn()

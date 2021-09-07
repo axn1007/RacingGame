@@ -38,6 +38,10 @@ public class KartMove : MonoBehaviour
     private float startPitch = 1.0f;
     private float maxPitch = 2.0f;
 
+    // 체크 포인트
+    public GameObject[] checkPoint;
+    bool[] check;
+
     private void Awake()
     {
         if(instance == null)
@@ -60,6 +64,9 @@ public class KartMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -1, 0);
 
+        // 체크 포인트 확인
+        check = new bool[checkPoint.Length];
+
         // 카트 주행 초기 사운드
         SoundManager.instance.driveAudio.volume = startVolume;
         SoundManager.instance.driveAudio.pitch = startPitch;
@@ -69,6 +76,7 @@ public class KartMove : MonoBehaviour
     {
         WheelMeshposAni();
         kartInput();
+        CheckPoint();
         //if(KPH > 10)
         //{
         //    KartDriveSound();
@@ -166,6 +174,61 @@ public class KartMove : MonoBehaviour
         SoundManager.instance.driveAudio.Play();
         SoundManager.instance.driveAudio.volume = Mathf.Lerp(startVolume, maxVolume, KPH / 150);
         SoundManager.instance.driveAudio.pitch = Mathf.Lerp(startPitch, maxPitch, KPH / 150);
+    }
+
+    void CheckPoint()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (check[0] == false)
+            {
+                rb.velocity = Vector3.zero; // 플레이어 움직임 초기화
+
+                transform.position = checkPoint[0].transform.position; // 플레이어 위치 이동
+                transform.rotation = checkPoint[0].transform.rotation; // 플레이어 방향 이동
+
+                return;
+            }
+            else if(check[check.Length - 1] == true)
+            {
+                rb.velocity = Vector3.zero;
+
+                transform.position = checkPoint[checkPoint.Length - 1].transform.position;
+                transform.rotation = checkPoint[checkPoint.Length - 1].transform.rotation;
+
+                return;
+            }
+            else
+            {
+                for(int i = 1; i < check.Length; i++)
+                {
+                    if(check[i] == false)
+                    {
+                        rb.velocity = Vector3.zero;
+
+                        transform.position = checkPoint[i - 1].transform.position;
+                        transform.rotation = checkPoint[i - 1].transform.rotation;
+
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    //체크 포인트 부딪히면 확인하기위해서
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Check Point")
+        {
+            for (int i = 0; i < checkPoint.Length; i++)
+            {
+                if (checkPoint[i].gameObject == other.gameObject)
+                {
+                    check[i] = true;
+                }
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)

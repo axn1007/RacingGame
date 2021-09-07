@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TutorialScene : MonoBehaviour
@@ -13,6 +14,9 @@ public class TutorialScene : MonoBehaviour
     //public static bool isPractice = false;
     bool isOption = false;
     bool isOption1 = false;
+
+    // Option 버튼
+    public Image[] optionBtn;
 
     // 게임 종료 전 붙잡기 위한 UI
     public GameObject ExitImage;
@@ -53,7 +57,36 @@ public class TutorialScene : MonoBehaviour
             isOption = false;
         }
     }
-    
+
+    public void OnClickBGMOnBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = false;
+
+        optionBtn[0].color = Color.gray;
+        optionBtn[1].color = Color.white;
+    }
+    public void OnClickBGMOffBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = true;
+
+        optionBtn[1].color = Color.gray;
+        optionBtn[0].color = Color.white;
+    }
+    public void OnClickEFTOnBtn()
+    {
+        SoundManager.instance.eftAudio.mute = false;
+
+        optionBtn[2].color = Color.gray;
+        optionBtn[3].color = Color.white;
+    }
+    public void OnClickEFTOffBtn()
+    {
+        SoundManager.instance.eftAudio.mute = true;
+
+        optionBtn[3].color = Color.gray;
+        optionBtn[2].color = Color.white;
+    }
+
     public void OnClcikOptionbtn1()
     {
         if (!isOption1)

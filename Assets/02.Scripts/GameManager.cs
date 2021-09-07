@@ -244,11 +244,13 @@ public class GameManager : MonoBehaviour
         if(!isPause)
         {
             Time.timeScale = 0;
+            SoundManager.instance.bgmAudio.mute = true;
             isPause = true;
         }
         else
         {
             Time.timeScale = 1;
+            SoundManager.instance.bgmAudio.mute = false;
             isPause = false;
         }
     }

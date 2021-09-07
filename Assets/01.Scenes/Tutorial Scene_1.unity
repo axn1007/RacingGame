@@ -907,7 +907,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239304488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1340177138}
+        m_TargetAssemblyTypeName: TutorialScene, Assembly-CSharp
+        m_MethodName: OnClickEFTOffBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &239304488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,7 +2550,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 473823026}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1340177138}
+        m_TargetAssemblyTypeName: TutorialScene, Assembly-CSharp
+        m_MethodName: OnClickBGMOffBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &473823026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2658,7 +2682,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 478390206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1340177138}
+        m_TargetAssemblyTypeName: TutorialScene, Assembly-CSharp
+        m_MethodName: OnClickBGMOnBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &478390206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8824,6 +8860,11 @@ MonoBehaviour:
   practiceCanvas: {fileID: 1599504414}
   optionImage: {fileID: 869770785}
   optionImage1: {fileID: 1384731881}
+  optionBtn:
+  - {fileID: 478390206}
+  - {fileID: 473823026}
+  - {fileID: 1357999215}
+  - {fileID: 239304488}
   ExitImage: {fileID: 1546213333}
 --- !u!114 &1340177139
 MonoBehaviour:
@@ -9064,7 +9105,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1357999215}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1340177138}
+        m_TargetAssemblyTypeName: TutorialScene, Assembly-CSharp
+        m_MethodName: OnClickEFTOnBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1357999215
 MonoBehaviour:
   m_ObjectHideFlags: 0

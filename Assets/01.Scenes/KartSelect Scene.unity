@@ -766,7 +766,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239304488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 882250380}
+        m_TargetAssemblyTypeName: KartSelectManager, Assembly-CSharp
+        m_MethodName: OnClickEFTOffBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &239304488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,7 +2033,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 473823026}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 882250380}
+        m_TargetAssemblyTypeName: KartSelectManager, Assembly-CSharp
+        m_MethodName: OnClickBGMOffBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &473823026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2141,7 +2165,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 478390206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 882250380}
+        m_TargetAssemblyTypeName: KartSelectManager, Assembly-CSharp
+        m_MethodName: OnClickBGMOnBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &478390206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2864,6 +2900,11 @@ MonoBehaviour:
   racerMat: {fileID: 2100000, guid: 9afa6e0c11da7f845a4acdcd1266c8a4, type: 2}
   kartMat: {fileID: 2100000, guid: e52e36328eb327940914a4fa1b86ec77, type: 2}
   optionImage: {fileID: 869770785}
+  optionBtn:
+  - {fileID: 478390206}
+  - {fileID: 473823026}
+  - {fileID: 1357999215}
+  - {fileID: 239304488}
   ExitImage: {fileID: 1546213333}
 --- !u!4 &882250381
 Transform:
@@ -4087,7 +4128,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1357999215}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 882250380}
+        m_TargetAssemblyTypeName: KartSelectManager, Assembly-CSharp
+        m_MethodName: OnClickEFTOnBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1357999215
 MonoBehaviour:
   m_ObjectHideFlags: 0

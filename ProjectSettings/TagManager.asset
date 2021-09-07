@@ -10,6 +10,7 @@ TagManager:
   - WHEELMESH
   - Goal
   - Goal2
+  - Check Point
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,9 @@ public class HomeScene : MonoBehaviour
 
     public GameObject optionImage;
     bool isOption = false;
+
+    // Option 버튼
+    public Image[] optionBtn;
 
     // 게임 종료 전 붙잡기 위한 UI
     public GameObject ExitImage;
@@ -111,6 +115,35 @@ public class HomeScene : MonoBehaviour
     public void OnClickExitExitBtn()
     {
         Application.Quit();
+    }
+
+    public void OnClickBGMOnBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = false;
+
+        optionBtn[0].color = Color.gray;
+        optionBtn[1].color = Color.white;
+    }
+    public void OnClickBGMOffBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = true;
+
+        optionBtn[1].color = Color.gray;
+        optionBtn[0].color = Color.white;
+    }
+    public void OnClickEFTOnBtn()
+    {
+        SoundManager.instance.eftAudio.mute = false;
+
+        optionBtn[2].color = Color.gray;
+        optionBtn[3].color = Color.white;
+    }
+    public void OnClickEFTOffBtn()
+    {
+        SoundManager.instance.eftAudio.mute = true;
+
+        optionBtn[3].color = Color.gray;
+        optionBtn[2].color = Color.white;
     }
 
     /* 비동기 씬전환 보류

@@ -29,6 +29,9 @@ public class EndingSceneManager : MonoBehaviour
     // 엔딩씬에서 다시 레이싱 버튼을 눌렀는지 확인을 위해서
     public static bool isEndRacingBtn = false;
 
+    // Option 버튼
+    public Image[] optionBtn;
+
     // 게임 종료 전 붙잡기 위한 UI
     public GameObject ExitImage;
 
@@ -100,6 +103,35 @@ public class EndingSceneManager : MonoBehaviour
             optionImage.gameObject.SetActive(false);
             isOption = false;
         }
+    }
+
+    public void OnClickBGMOnBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = false;
+
+        optionBtn[0].color = Color.gray;
+        optionBtn[1].color = Color.white;
+    }
+    public void OnClickBGMOffBtn()
+    {
+        SoundManager.instance.bgmAudio.mute = true;
+
+        optionBtn[1].color = Color.gray;
+        optionBtn[0].color = Color.white;
+    }
+    public void OnClickEFTOnBtn()
+    {
+        SoundManager.instance.eftAudio.mute = false;
+
+        optionBtn[2].color = Color.gray;
+        optionBtn[3].color = Color.white;
+    }
+    public void OnClickEFTOffBtn()
+    {
+        SoundManager.instance.eftAudio.mute = true;
+
+        optionBtn[3].color = Color.gray;
+        optionBtn[2].color = Color.white;
     }
 
     public void OnClickHomeBtn()
