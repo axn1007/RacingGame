@@ -23,8 +23,8 @@ public class KartMove : MonoBehaviour
     public float maxAngle = 30f;
     [Tooltip("바퀴에 가해지는 최대 제동 토크")]
     public float brakeTorque = 10000f;
-    [Tooltip("바퀴에 가해지는 가속도")]
-    public float power  = 600f;
+    [Tooltip("바퀴에 가해지는 부스터 토크")]
+    public float power  = 8000f;
 
     Rigidbody rb;
     public float downForce;
@@ -107,7 +107,7 @@ public class KartMove : MonoBehaviour
         // 좌, 우 // 애커먼 스티어링 공식 (좌, 우로 이동할 때 심하게 미끄러지는 것을 조금이라도 방지)
         for (int i = 0; i < wheels.Length -2; i++)
         {
-            if (hInput > 0)
+            /*if (hInput > 0)
             {   // rear tracks size is set to 1.5f          wheel base has been set to 2.55f
                 wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius + (1.5f / 2))) * hInput;
                 wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius - (1.5f / 2))) * hInput;
@@ -116,30 +116,30 @@ public class KartMove : MonoBehaviour
             {
                 wheels[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius - (1.5f / 2))) * hInput;
                 wheels[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / (radius + (1.5f / 2))) * hInput;
-                // transform.Rotate(Vector3.up * steerHelping)
+                //transform.Rotate(Vector3.up * steerHelping)
             }
             else
             {
                 wheels[0].steerAngle = 0;
                 wheels[1].steerAngle = 0;
-            }
+            }*/
 
-            //wheels[i].steerAngle = maxAngle * hInput;
+            wheels[i].steerAngle = maxAngle * hInput;
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Brake);
         }
-        else if (Input.GetKey(KeyCode.LeftShift) && maxTorque < 7000)
+        else if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            maxTorque += power;
+            maxTorque = 8000;
 
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Accel);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            maxTorque = 4000f;
+            maxTorque = 4000;
         }
 
         // 계기판
