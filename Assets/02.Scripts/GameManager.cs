@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     public GameObject ExitImage;
 
     // ∞Ò »Æ¿Œ
+    public GameObject goal;
+    public GameObject goal2;
     public static bool isGoal1 = false;
     public static bool isGoal2 = false;
 
@@ -222,7 +224,7 @@ public class GameManager : MonoBehaviour
 
     void Goal()
     {
-        if(isGoal1 == true && isGoal2 == true)
+        if(isGoal1 == true & isGoal2 == true)
         {
             SoundManager.instance.PlayEFT(SoundManager.EFT.EFT_Goal);
 
@@ -233,7 +235,7 @@ public class GameManager : MonoBehaviour
 
             DataManager.nowPlayer.userTime = time;
             DataManager.nowPlayer.time = text.text;
-            //DataManager.instance.Save(DataManager.nowPlayer);
+            DataManager.instance.Save(DataManager.nowPlayer);
 
             SceneManager.LoadScene("Ending Scene");
         }

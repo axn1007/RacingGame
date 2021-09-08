@@ -20,6 +20,9 @@ public class EndingSceneManager : MonoBehaviour
     
     // ScrollView - Content
     public Transform content;
+    // 저장할 Content
+    //public GameObject content2;
+    //public GameObject[] ranks;
     // 순위 정보
     public GameObject ranking;
 
@@ -40,6 +43,11 @@ public class EndingSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        if(DataManager.nowPlayer.ranking != null)
+        {
+            DataManager.nowPlayer.ranking[DataManager.nowPlayer.ranking.Length].transform.parent = content;
+        }
+
         //content = DataManager.nowPlayer.ranking[DataManager.nowPlayer.ranking.Length];
 
         // Json으로 저장해두었던 주행 시간을 불러오기
@@ -76,6 +84,20 @@ public class EndingSceneManager : MonoBehaviour
         R.transform.parent = content;
         R.gameObject.SetActive(true);
 
+        if(DataManager.nowPlayer.ranking[DataManager.nowPlayer.ranking.Length] != null)
+        {
+            for (int i = 0; DataManager.nowPlayer.ranking[i]; i++)
+            {
+                DataManager.nowPlayer.ranking[i] = R.transform.gameObject;
+                DataManager.instance.Save(DataManager.nowPlayer);
+            }
+        }
+        else
+        {
+            DataManager.nowPlayer.ranking[0] = R.transform.gameObject;
+            DataManager.instance.Save(DataManager.nowPlayer);
+        }
+
         userInput.gameObject.SetActive(false);
         enterBtn.gameObject.SetActive(false);
     }
@@ -87,7 +109,19 @@ public class EndingSceneManager : MonoBehaviour
 
     public void OnClickRacing()
     {
+
+        // 다시 레이싱을 시작했을 때 체크 포인트를 초기화 시켜줘야 한다.
+        //GameManager.isGoal1 = false;
+        //GameManager.isGoal2 = false;
+        for(int i = 0; i < KartMove.instance.check.Length; i++)
+        {
+            KartMove.instance.check[i] = false;
+        }
+        GameManager.isGoal1 = false;
+        GameManager.isGoal2 = false;
+
         isEndRacingBtn = true;
+
         SceneManager.LoadScene("Next Scene");
     }
 

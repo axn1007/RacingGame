@@ -40,7 +40,7 @@ public class KartMove : MonoBehaviour
 
     // 체크 포인트
     public GameObject[] checkPoint;
-    bool[] check;
+    public bool[] check;
 
     private void Awake()
     {
@@ -233,10 +233,15 @@ public class KartMove : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if(other.transform.gameObject == GameManager.instance.goal)
+        {
+            GameManager.instance.goal2.gameObject.SetActive(true);
+        }
         if (other.CompareTag("Goal"))
         {
             //Destroy(other);
             GameManager.isGoal1 = true;
+
             print("1부딪");
         }
         else if (other.CompareTag("Goal2"))

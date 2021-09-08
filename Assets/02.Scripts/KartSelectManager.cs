@@ -132,6 +132,7 @@ public class KartSelectManager : MonoBehaviour
         SoundManager.instance.bgmAudio.Stop();
 
         isRacingBtn = true;
+
         SceneManager.LoadScene("Next Scene");
         //SceneManager.LoadScene("Racing Scene");
     }
